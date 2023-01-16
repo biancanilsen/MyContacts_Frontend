@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-// expira em um dia? N entendi como funciona
 const configJwt = {
     expiresIn: '1d',
 };

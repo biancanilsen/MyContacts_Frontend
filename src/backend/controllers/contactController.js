@@ -2,11 +2,11 @@ const contactService = require('../services/contactService');
 const defaultApiReturn = require('../utils/defaultApiReturn');
 
 
-const creteNewContact = async (req, res) => {
+const createNewContact = async (req, res) => {
   try {
     const { nome, telefone, email } = req.body;
     const { id } = req.tokenData;
-    const response = await contactService.creteNewContact({ nome, telefone, email, userId: id });
+    const response = await contactService.createNewContact({ nome, telefone, email, userId: id });
     if (!response) {
       return res.status(400).json(defaultApiReturn({ error: { message: 'Este contato já existe'} }));
     }
@@ -18,6 +18,5 @@ const creteNewContact = async (req, res) => {
 }
 
 module.exports = {
-  creteNewContact,
-  
+  createNewContact
 };

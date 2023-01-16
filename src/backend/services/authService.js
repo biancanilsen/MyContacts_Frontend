@@ -10,8 +10,7 @@ const authentication = async ({ email, password }) => {
             email: user.email
         },
     );
-    return { token: response};
+    return { token: response };
 }
 
-// por que exportar com as chaves?
 module.exports = { authentication };

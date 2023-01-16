@@ -1,5 +1,4 @@
 const { Contacts } = require('../database/models');
-
 const defaultApiReturn = require('../utils/defaultApiReturn');
 
 const validatePhone = async (req, res, next) => {
@@ -48,7 +47,6 @@ const validateEmailIsInUseByOtherContact = async (req, res, next) => {
     const { id, email } = req.body;
     
     const contactWithSameEmail = await Contacts.findOne({ where: { email, isActive: true } });
-    console.log(contactWithSameEmail);
     if (contactWithSameEmail && contactWithSameEmail.dataValues.id !== id) {
       return res.status(400).json(defaultApiReturn({ error: { message: `Este E-mail está associado ao contato: ${contactWithSameEmail.dataValues.nome}.` } }));
     }

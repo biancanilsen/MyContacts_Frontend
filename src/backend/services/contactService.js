@@ -5,7 +5,7 @@ const listContactsByUserId = async ({ id }) => {
     if (!contacts) return null;
     return contacts;
 }
-const creteNewContact = async ({ nome, telefone, email, userId }) => {
+const createNewContact = async ({ nome, telefone, email, userId }) => {
     return await Contacts.create({ nome: nome, telefone: telefone, email: email, userId: userId });
   }
   
@@ -21,4 +21,4 @@ const creteNewContact = async ({ nome, telefone, email, userId }) => {
     return await Contacts.update({ isActive: false }, { where: { id: id, userId: userId } });
   }
   
-  module.exports = { listContactsByUserId, creteNewContact, updateContact, deleteContact };
+  module.exports = { listContactsByUserId, createNewContact, updateContact, deleteContact };

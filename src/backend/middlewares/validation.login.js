@@ -17,7 +17,7 @@ const validateEmail = ( req, res, next) => {
     }
 };
 
-const validadePassword = (req, res, next) => {
+const validatePassword = (req, res, next) => {
     try {
         const { password } = req.body;
         if (!password || password !== undefined && password.length <= 0) {
@@ -32,5 +32,5 @@ const validadePassword = (req, res, next) => {
 
 module.exports = {
     validateEmail,
-    validadePassword,
+    validatePassword,
 }
