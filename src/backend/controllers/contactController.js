@@ -1,4 +1,4 @@
-const contactService = require('../services/contactService')
+const contactService = require('../services/contactService');
 const defaultApiReturn = require('../utils/defaultApiReturn');
 
 const listContactsByUserId = async (req, res) => {

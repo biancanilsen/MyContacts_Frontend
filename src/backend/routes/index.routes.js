@@ -4,6 +4,6 @@ const userRouter = require('./user.routes');
 
 const routerIndex = Router();
 routerIndex.use('/contacts', contactsRouter);
-routerIndex.use('/user', userRouter)
+routerIndex.use('/user', userRouter);
 
 module.exports = routerIndex;
