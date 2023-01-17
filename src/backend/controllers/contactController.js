@@ -41,8 +41,24 @@ const updateContact = async (req, res) => {
   }
 }
 
+const deleteContact = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const userId = req.tokenData.id;
+    const response = await contactService.deleteContact({ id, userId });
+    if (!response) {
+      return res.status(400).json(defaultApiReturn({ error: { message: 'Este contato não existe'} }));
+    }
+    return res.status(200).json(defaultApiReturn({}));
+  } catch(e) {
+    console.error(e.message);
+    return res.status(500).json(defaultApiReturn({ error: { message: 'Algo deu errado, tente novamente.' } }));
+  }
+}
+
 module.exports = {
   listContactsByUserId,
   createNewContact,
-  updateContact
+  updateContact,
+  deleteContact,
 };
