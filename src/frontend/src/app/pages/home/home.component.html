@@ -1,0 +1,29 @@
+<div id="contactList" class="page">
+    <div class="envolti-table mat-elevation-z8" fxLayout="column">
+      <table mat-table [dataSource]="dataContact" #contactTable>
+        <ng-container matColumnDef="nome">
+          <th mat-header-cell *matHeaderCellDef>Nome</th>
+          <td mat-cell *matCellDef="let contact">
+            {{ contact.nome  }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="telefone">
+          <th mat-header-cell *matHeaderCellDef>Telefone</th>
+          <td mat-cell *matCellDef="let contact">
+            {{ contact.telefone  }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let contact">
+            {{ contact.email }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedContact; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedContact"></tr>
+      </table>
+    </div>
+  </div>
