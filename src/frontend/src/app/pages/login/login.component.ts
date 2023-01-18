@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit{
     });
   }
 
-
   loginUser(){
     this.loginForm.controls['email'].markAsTouched();
     this.loginForm.controls['password'].markAsTouched();

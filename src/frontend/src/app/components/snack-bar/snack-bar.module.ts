@@ -8,8 +8,6 @@ import { SnackBarComponent } from './snack-bar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
-
-
 @NgModule({
   declarations: [SnackBarComponent],
   imports: [

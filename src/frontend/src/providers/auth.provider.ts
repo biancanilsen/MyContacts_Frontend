@@ -16,7 +16,6 @@ export class AuthProvider {
         .post('user/login', credentials)
         .subscribe((response: HttpResponse<any>) => {
           resolve(response.body);
-          // this.snackBar.successMessage(response.body.message);
         }, reject);
     });
   }
