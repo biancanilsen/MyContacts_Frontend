@@ -162,7 +162,6 @@ import {
         headers: options.headers,
         search: this.buildUrlSearchParams(options.params),
         body: JSON.stringify(options.data),
-        // withCredentials:  true,
         observe: 'response' as 'response',
       };
   
@@ -174,7 +173,6 @@ import {
       }
   
       if (isCommand) {
-        // this.loader.show();
       }
   
       let stream = this.http
@@ -193,7 +191,6 @@ import {
             }
   
             if (isCommand) {
-              // this.loader.hide();
             }
           })
         );
@@ -223,7 +220,6 @@ import {
       if (csrf) {
         options.headers = options.headers.append('X-CSRF-TOKEN', csrf);
       }
-      // options.data = { ...options.data, _token: xsrfToken, csrf_token: xsrfToken }
       return options;
     }
     private addAuthToken(options: ApiGatewayOptions): ApiGatewayOptions {
@@ -238,8 +234,6 @@ import {
     }
   
     private getXsrfCookie(): string {
-      // this.cookieService.set('XSRF-TOKEN', 'eyJpdiI6IkQyWmtpZTBPempDOHgyZEQ5QmExVWc9PSIsInZhbHVlIjoiTFUwV1RSNlVvOWpoeFRRcHJieGFNZ3VaTTNsU3hQMDRZeVFyQndpYVFVSmVWM2lBOWRMaHZXM1k3cmt6WkpZNDZWb0QxSHpqeWpwYVFjSmdtUVlvdTRPQUFSdEF5cXhDZ3hOTVQ1a2NqOEZsanpxVWRlMGphLys4N0NIb3dUMVkiLCJtYWMiOiJhY2NmY2QwMmEwNTYyZWI3Nzc4ODE0YTUyNTFmMTllMGQ2Yjk0YTdiYjg5MDQwNmRlY2Y0NzVhZTJmZTc4NGFjIiwidGFnIjoiIn0%3D')
-      // this.cookieService.set('laravel_session', 'eyJpdiI6IlEvNUJNVmRERlRrSG5KN20rK3BHTkE9PSIsInZhbHVlIjoieXhRL2o0VnhKVG9sNG0wQW9heElIYnlOSGE1aHA2WCtZSElGbWZ6ckpZbW5xcXdOd3AyV3BvSmtGWXJBbzIwUit1SUl4MUU4NS9rbTh2UzkrTC94L0NSc2F5ellKZFZSWmNIVCtOSEZEdWhFaDBDNXArK0p2dWxncHovOGFCdlAiLCJtYWMiOiJkZmQxMGUzODc5MmMyZTk3YTk0MTc4OTc1YjU2NzZmOTA4MTRlOTQ4NmJmMjY3MjRhZWJkMGUyNjI1ZWRkY2Q1IiwidGFnIjoiIn0%3D')
       var matches = document.cookie.match(/\bXSRF-TOKEN=([^\s;]+)/);
       try {
         return (matches && decodeURIComponent(matches[1]))!;
@@ -278,21 +272,16 @@ import {
         }
         const excepetion = error.error;
         if (error.status == 401) {
-          // this.snackBar.errorMessage('Não autorizado');
           setTimeout(() => {
-            // TODO - Remove only necessary
             localStorage.clear();
             location.replace('');
           }, 2000);
         } else if (!excepetion.code) {
-          // this.snackBar.unexpectedMessage();
         } else {
           console.log('error: ' + excepetion);
-          // this.snackBar.errorMessage(error.message);
         }
         return error;
       } catch (jsonError) {
-        // this.snackBar.errorMessage('Erro ao conectar-se ao servidor. Tente novamente mais tarde.');
         return {
           code: -1,
           message: 'Erro ao conectar-se ao servidor. Tente novamente mais tarde.',

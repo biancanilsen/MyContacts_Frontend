@@ -16,7 +16,6 @@ export class UsersProvider {
     return new Promise((resolve, reject) => {
         this.apiGateway.get('user').subscribe((response: HttpResponse<any>) => {
             resolve(response.body);
-            // this.snackBar.successMessage(response.body.message);
         }, reject);
     });
 }

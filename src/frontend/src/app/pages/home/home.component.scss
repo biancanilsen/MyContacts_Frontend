@@ -1,0 +1,110 @@
+#collaboratorList {
+    max-width: 1700px;
+  
+    .envolti-table {
+      margin-top: 20px;
+      overflow: auto;
+      // height: 100%;
+      // max-height: calc(100% - 60px);
+      overflow: auto;
+      position: relative;
+      max-height: 645px;
+      width: 100%;
+      border-radius: 10px;
+  
+      .button-tab {
+        white-space: nowrap;
+        overflow: hidden;
+      }
+  
+      .mat-column-collaborator {
+        width: 20%;
+  
+        .mat-sort-header-content {
+          margin-left: 1px !important;
+        }
+      }
+  
+      .mat-column-admissionDate {
+        width: 20%;
+      }
+  
+      .mat-column-office {
+        width: 20%;
+        .mat-sort-header-content {
+          margin-left: 1px !important;
+        }
+      }
+  
+      .mat-column-currentClient {
+        width: 20%;
+        .mat-sort-header-content {
+          margin-left: -1px !important;
+        }
+      }
+  
+      .mat-column-status {
+        width: 10%;
+        .mat-sort-header-content {
+          margin-left: 3px !important;
+        }
+      }
+  
+      .mat-column-icon {
+        width: 10%;
+      }
+    }
+  
+    h2 {
+      color: #2f3133;
+      margin-top: 3px;
+    }
+  
+    .new-btn {
+      height: 40px;
+      width: 100%;
+      max-width: 100px;
+      margin-top: 8px;
+    }
+  
+    .search {
+      width: 100%;
+      max-width: 1650px;
+      margin-right: 5px;
+  
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  
+    .active {
+      width: 100%;
+      max-width: 100px;
+      background: #4cdb72;
+      border-radius: 10px;
+      color: #fff;
+    }
+  
+    .inactive {
+      width: 100%;
+      max-width: 100px;
+      background: #8a9398;
+      border-radius: 10px;
+      color: #fff;
+    }
+  
+    .iconAdd {
+      // margin-right: 0!important;
+      margin-left: 15px;
+    }
+  
+    .mat-sort-header-arrow {
+      color: white !important;
+    }
+  
+    // .mat-focus-indicator btn-header mat-icon-button mat-button-base mat-primary{
+    //   padding-top: 0 !important
+    // }
+  
+    
+  }

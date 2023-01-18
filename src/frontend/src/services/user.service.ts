@@ -20,6 +20,4 @@ export class UserService {
   isUserLoggedIn(): Subject<boolean> {
     return this.loggedChanged;
   }
-
-
 }
