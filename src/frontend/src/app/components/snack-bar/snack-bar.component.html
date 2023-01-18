@@ -1,0 +1,18 @@
+<div class="snack-bar-content" fxLayoutAlign="space-between center" fxLayout="row">
+  <div fxLayout="column">
+    <p class="no-margin">{{ data.message }}</p>
+    <strong>{{ data.name }}</strong>
+  </div>
+  <div
+    fxLayout="column"
+    *ngIf="data.icon === 'check'"
+    style="margin-left: 12px">
+    <mat-icon>check_circle</mat-icon>
+  </div>
+  <div
+    fxLayout="column"
+    *ngIf="data.icon !== 'check'"
+    style="margin-left: 12px">
+    <button mat-button (click)="close()">Ok</button>
+  </div>
+</div>

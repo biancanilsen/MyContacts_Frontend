@@ -1,0 +1,43 @@
+<div id="login-page" fxFlex="100">
+    <div fxLayout="column" fxFlex="100">
+      <img
+        src="../../../assets/logo-myContacts.png"
+        alt="logo"
+        class="logo"
+      />
+  
+      <div class="login-wrapper">
+        <h2 class="no-margin">Faça seu login</h2>
+        <p class="login-text">Acesse a aplicação com seu usuário e sua senha</p>
+  
+        <div class="login-form">
+          <form  [formGroup]="loginForm" fxLayout="column" (submit)="onSubmit()">
+            <p class="form">
+              <mat-form-field appearance="outline">
+                <input
+                  matInput
+                  formControlName="email"
+                  placeholder="Email"
+                />
+
+              </mat-form-field>
+            </p>
+            <p class="form">
+              <mat-form-field class="input" appearance="outline">
+                <input
+                  matInput
+                  formControlName="password"
+                  type="password"
+                  placeholder="Senha"
+                />
+              </mat-form-field>
+            </p>
+            <button (click)="loginUser()" class="w-100" mat-raised-button>
+              Entrar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
