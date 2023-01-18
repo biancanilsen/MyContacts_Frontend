@@ -1,1 +1,100 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("../src/app/layout/scss/util.scss");
+@import url("../src/app/layout/scss/frame.scss"); 
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    scrollbar-width: none !important;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+.page {
+    padding: 32px 32px 0;
+    // max-width: 1280px;
+    margin-left: 20px !important;
+    height: calc(100% - 64px);
+}
+
+
+.title {
+    margin-bottom: 24px !important;
+}
+
+
+
+.custom-frame {
+
+    & .mat-checkbox-background,
+    .mat-checkbox-frame {
+        border-radius: 70% !important;
+        // width: 20px;
+        // height: 20px;
+    }
+}
+
+.mat-option:hover {
+    background: #d0e7ef !important;
+}
+
+.mat-selected {
+    background: #d0e7ef !important;
+}
+
+.mat-row:hover {
+    background: #d0e7ef !important;
+}
+
+h2 {
+    color: #2f3133 !important;
+}
+
+
+.menu-button-logo {
+    margin-top: 8px !important;
+}
+
+th {
+    font-size: 16px !important;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

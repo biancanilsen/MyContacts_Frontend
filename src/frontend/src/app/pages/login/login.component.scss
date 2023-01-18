@@ -1,0 +1,109 @@
+#login-page {
+    width: 100%;
+    background-image: url(../../../assets/background-login.png);
+    background-color: white;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh !important;
+
+    .login-text {
+        margin-top: 30px;
+        font-size: 19.7px;
+        margin-bottom: 30px;
+        color: #5706da   !important;
+    }
+
+
+    .login-wrapper {
+        margin-left: 10%;
+        margin-top: 10%;
+
+        h2 {
+            color: #5706da !important;
+            font-size: 62px;
+            font-weight: bold;
+        }
+
+        .form {
+            font-size: 20px;
+            height: 100px;
+        }
+    }
+
+    .login-form {
+        width: 100%;
+    }
+
+    .logo {
+        margin-top: 18px;
+        margin-left: 9.5%;
+        width: 100%;
+        max-width: 200px;
+        max-height: 250px;
+    }
+
+    button {
+        background-color: #D55756;
+        text-align: center;
+        color: white;
+        width: 100%;
+        max-width: 400px;
+        margin-left: 15%;
+        border-radius: 13px;
+        height: 48px;
+        border: 1px solid #D55756;
+        margin: 0%;
+      }
+
+
+
+    mat-form-field {
+        color: black !important;
+        width: 100%;
+        max-width: 400px;
+        height: 100%;
+        max-height: 85px;
+        border-radius: 30px !important;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+        color: black !important;
+        border-radius: 20px !important;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: black !important;
+        border-radius: 20px !important;
+    }
+
+    .mat-form-field-outline-end {
+        border-radius: 0 20px 20px 0 !important;
+    }
+
+    .mat-input-placeholder-wrapper {
+        top: -1em;
+    }
+
+    .mat-input-element {
+        margin-bottom: 7px !important;
+    }
+
+
+    .mat-form-field-outline,
+    .mat-form-field-empty.mat-form-field-label,
+    .mat-form-field-label,
+    .mat-form-field-underline,
+    .mat-input-element,
+    ::placeholder {
+        color: black !important;
+    }
+    
+    @media screen and (max-width: 1265px) {
+        background-image: none;
+
+    }
+
+
+}
