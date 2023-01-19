@@ -12,7 +12,6 @@ export class HomeComponent {
     @Output() onChange: EventEmitter<any> = new EventEmitter();
     @ViewChild('contactTable') contactTable!: MatTable<any>;
     dataContact: [] = [];
-    telefone!: string;
 
     displayedColumns: string[] = ['nome', 'telefone', 'email', 'icon'];
 
