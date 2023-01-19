@@ -19,7 +19,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MatTableModule } from '@angular/material/table';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,8 +42,7 @@ import { MatTableModule } from '@angular/material/table';
     HttpClientModule,
     MatSidenavModule,
     MatSnackBarModule,
-    MatTableModule
-
+    MatTableModule,
   ],
   providers: [SnackBarService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
