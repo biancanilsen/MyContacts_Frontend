@@ -30,10 +30,6 @@ export class HomeComponent {
     }
 
     async getContactList() {
-      let token  = sessionStorage.getItem('token');
-      let configHeader = {headers: {
-        'token': token
-      }}
       this.dataContact = await this.contactProvider.listContactsByUserId();
     }
 }

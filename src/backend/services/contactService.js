@@ -10,7 +10,6 @@ const listContactsByUserId = async ({ id }) => {
   }
 }
 
-
 const createNewContact = async ({ nome, telefone, email, userId }) => {
     return await Contacts.create({ nome: nome, telefone: telefone, email: email, userId: userId });
   }
