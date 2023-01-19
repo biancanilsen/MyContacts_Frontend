@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MatSidenav } from '@angular/material/sidenav';
 import { AuthProvider } from 'src/providers/auth.provider';
 import { SnackBarService } from 'src/services/snackbar.service';
 
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit{
   loginForm!: FormGroup;
   form!: FormGroup;
   isLoading: boolean = false;
+  public isLogged = false;
   public get fb(): FormBuilder {
     return this._fb;
   }
@@ -42,6 +44,7 @@ export class LoginComponent implements OnInit{
     });
   }
 
+
   loginUser(){
     this.loginForm.controls['email'].markAsTouched();
     this.loginForm.controls['password'].markAsTouched();
@@ -61,6 +64,8 @@ export class LoginComponent implements OnInit{
       try {
         const auth = await this.authProvider.login(data);
         this.isLoading = true;
+        localStorage.setItem("token", auth.apiResponse.token);
+        this.isLogged = true;
         this.router.navigate(['/home']);
         
       } catch (err: any) {

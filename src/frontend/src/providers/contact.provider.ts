@@ -1,4 +1,4 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiGateway } from 'src/api-gateway';
 import { environment } from 'src/environments/environment';
@@ -11,22 +11,13 @@ export class ContactProvider {
 
   ngOnInit(): void { }
 
-  // findAll(): Promise<any> {
-  //   return new Promise((resolve, reject) => {
-  //     this.apiGateway
-  //       .get(environment.baseUrl +'contacts/list-contacts')
-  //       .subscribe((response: HttpResponse<any>) => {
-  //         resolve(response.body);
-  //       }, reject);
-  //   });
-  // }
-  findAll(): Promise<any> {
+  listContactsByUserId(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.apiGateway
-        .post('contacts/list-contacts')
-        .subscribe((response: HttpResponse<any>) => {
-          resolve(response.body);
-        }, reject);
+        this.apiGateway
+            .get('contacts/list-contacts')
+            .subscribe((response: HttpResponse<any>) => {
+                resolve(response.body);
+            }, reject);
     });
-  }
+}
 }

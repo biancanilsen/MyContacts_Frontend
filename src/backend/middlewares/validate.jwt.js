@@ -4,7 +4,7 @@ const defaultApiReturn = require('../utils/defaultApiReturn');
 module.exports = async (req, res, next) => {  
   try {
     const token = req.headers.authorization;
-  
+    console.log(token);
     if (token.length === 0) {
       return res.status(401).json(defaultApiReturn({ error: { message: 'Token não encontrado' } }));
     }

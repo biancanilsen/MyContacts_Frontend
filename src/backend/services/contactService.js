@@ -1,10 +1,16 @@
 const { Contacts } = require('../database/models');
 
 const listContactsByUserId = async ({ id }) => {
+  try {
     const contacts = await Contacts.findAll({ where: { userId: id, isActive: true }, attributes: { exclude: ['userId', 'UserId','data_cadastro', 'data_alteração', 'isActive'] } });
-    if (!contacts) return null;
-    return contacts;
+      if (!contacts) return null;
+      return contacts;
+  } catch(e) {
+    console.error(e.message);
+  }
 }
+
+
 const createNewContact = async ({ nome, telefone, email, userId }) => {
     return await Contacts.create({ nome: nome, telefone: telefone, email: email, userId: userId });
   }

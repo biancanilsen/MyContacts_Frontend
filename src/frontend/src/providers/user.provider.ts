@@ -12,6 +12,10 @@ export class UsersProvider {
 
   ngOnInit(): void {}
 
+  // auth(token: any): void {
+  //   localStorage.setItem('token', token);
+  // }
+
   getUser(): Promise<any> {
     return new Promise((resolve, reject) => {
         this.apiGateway.get('user').subscribe((response: HttpResponse<any>) => {

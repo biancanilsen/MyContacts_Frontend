@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ContactProvider } from 'src/providers/contact.provider';
 import { MatTable } from '@angular/material/table';
@@ -10,6 +10,7 @@ import { MatTable } from '@angular/material/table';
   encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent {
+  @Output() onChange: EventEmitter<any> = new EventEmitter();
   @ViewChild('contactTable') contactTable!: MatTable<any>;
   dataContact: [] = [];
 
@@ -19,23 +20,22 @@ export class HomeComponent {
     'email',
   ];
 
-  selectedIndex: number = 0;
-  Contact: any;
-  form!: FormGroup;
-  filteredContactList: any;
-
   constructor(
     private contactProvider: ContactProvider,
   ){}
 
-    ngOnit(): void {
+  ngOnInit(): void {
       console.log('a')
       this.getContactList();
       console.log('b')
     }
 
     async getContactList() {
-      this.dataContact = await this.contactProvider.findAll();
+      let token  = sessionStorage.getItem('token');
+      let configHeader = {headers: {
+        'token': token
+      }}
+      this.dataContact = await this.contactProvider.listContactsByUserId();
       console.log("🚀 ~ file: home.component.ts:37 ~ HomeComponent ~ getContactList ~ this.dataContact", this.dataContact)
     }
 }
