@@ -16,7 +16,7 @@ export class ContactProvider {
         this.apiGateway
             .get('contacts/list-contacts')
             .subscribe((response: HttpResponse<any>) => {
-                resolve(response.body);
+                resolve(response.body.apiResponse);
             }, reject);
     });
 }

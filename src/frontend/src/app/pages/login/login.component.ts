@@ -54,12 +54,10 @@ export class LoginComponent implements OnInit{
     if(this.loginForm.valid){
 
       const formData = this.loginForm.getRawValue();
-      console.log("🚀 ~ file: login.component.ts:41 ~ LoginComponent ~ onSubmit ~ formData", formData)
       const data = {
         email: formData.email,
         password: formData.password,
       };
-      console.log("🚀 ~ file: login.component.ts:51 ~ LoginComponent ~ onSubmit ~ data", data)
   
       try {
         const auth = await this.authProvider.login(data);

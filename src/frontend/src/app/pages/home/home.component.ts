@@ -2,7 +2,6 @@ import { Component, EventEmitter, OnInit, Output, ViewChild, ViewEncapsulation }
 import { FormGroup } from '@angular/forms';
 import { ContactProvider } from 'src/providers/contact.provider';
 import { MatTable } from '@angular/material/table';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,14 +19,14 @@ export class HomeComponent {
     'email',
   ];
 
+  displayedColumns: string[] = ['nome', 'telefone', 'email'];
+
   constructor(
     private contactProvider: ContactProvider,
   ){}
 
   ngOnInit(): void {
-      console.log('a')
       this.getContactList();
-      console.log('b')
     }
 
     async getContactList() {
@@ -36,6 +35,5 @@ export class HomeComponent {
         'token': token
       }}
       this.dataContact = await this.contactProvider.listContactsByUserId();
-      console.log("🚀 ~ file: home.component.ts:37 ~ HomeComponent ~ getContactList ~ this.dataContact", this.dataContact)
     }
 }
