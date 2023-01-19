@@ -11,7 +11,7 @@ export class UsersProvider {
   constructor(private apiGateway: ApiGateway) {}
 
   ngOnInit(): void {}
-
+  
   getUser(): Promise<any> {
     return new Promise((resolve, reject) => {
         this.apiGateway.get('user').subscribe((response: HttpResponse<any>) => {

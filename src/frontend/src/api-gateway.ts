@@ -227,7 +227,7 @@ import {
       if (token) {
         options.headers = options.headers.append(
           'Authorization',
-          'Bearer ' + token
+          token
         );
       }
       return options;
