@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { ContactProvider } from 'src/providers/contact.provider';
 import { MatTable } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { EditContactDialogComponent } from './edit-contact-dialog/edit-contact-dialog.component';
+import { HomeDialogComponent } from './home-dialog/home-dialog.component';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -34,7 +34,7 @@ export class HomeComponent {
     getContacts(contactSelected: any) {
         this.method = 'edit';
         sessionStorage.setItem('method', this.method);
-        const dialogRef = this.dialog.open(EditContactDialogComponent, {
+        const dialogRef = this.dialog.open(HomeDialogComponent, {
             width: '500px',
             height: '400px',
             data: contactSelected,
@@ -45,5 +45,20 @@ export class HomeComponent {
             }
         });
     }
+
+    openDialog() {
+        this.method = 'add';
+        sessionStorage.setItem('method', this.method);
+        const dialogRef = this.dialog.open(HomeDialogComponent, {
+          width: '500px',
+          height: '400px',
+        });
+    
+        dialogRef.afterClosed().subscribe(dependent => {
+          if (dependent) {
+            this.getContactList();
+          }
+        });
+      }
 }
 

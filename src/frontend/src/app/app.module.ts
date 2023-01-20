@@ -20,14 +20,14 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MatTableModule } from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
-import { EditContactDialogComponent } from './pages/home/edit-contact-dialog/edit-contact-dialog.component';
+import { HomeDialogComponent } from './pages/home/home-dialog/home-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
     SnackBarComponent,
-    EditContactDialogComponent
+    HomeDialogComponent
   ],
   imports: [
     BrowserModule,
