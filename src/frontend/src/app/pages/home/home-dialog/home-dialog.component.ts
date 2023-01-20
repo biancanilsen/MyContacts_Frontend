@@ -46,8 +46,7 @@ export class HomeDialogComponent {
     const data = this.contactForm.getRawValue();
     if (this.method === 'add') {
       try {
-        const contact = await this.contactProvider.saveNewContact(data);
-        sessionStorage.setItem('contact_id', contact.id);
+        await this.contactProvider.saveNewContact(data);
       } catch (error: any) {
         console.log('ERROR 132' + error);
       }
