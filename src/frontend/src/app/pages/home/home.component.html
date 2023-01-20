@@ -26,6 +26,9 @@
           <button class="table-button" mat-button (click)="getContacts(contact)">
             <mat-icon class="icon-button">edit</mat-icon>
           </button>
+          <button class="table-button" mat-button (click)="deleteContact(contact.id)">
+            <mat-icon class="icon-button">delete</mat-icon>
+          </button>
           <a mat-flat-button class="wpp-button" href="https://wa.me/55{{contact.telefone}}" target="_blank">Wpp</a>
         </td>
       </ng-container>

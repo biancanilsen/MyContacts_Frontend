@@ -4,6 +4,8 @@ import { ContactProvider } from 'src/providers/contact.provider';
 import { MatTable } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { HomeDialogComponent } from './home-dialog/home-dialog.component';
+import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogService } from 'src/services/confirn-dialog.service';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -21,6 +23,7 @@ export class HomeComponent {
     constructor(
         public dialog: MatDialog,
         private contactProvider: ContactProvider,
+        private dialogService: ConfirmDialogService,
     ) { }
 
     ngOnInit(): void {
@@ -50,15 +53,39 @@ export class HomeComponent {
         this.method = 'add';
         sessionStorage.setItem('method', this.method);
         const dialogRef = this.dialog.open(HomeDialogComponent, {
-          width: '500px',
-          height: '400px',
+            width: '500px',
+            height: '400px',
         });
-    
+
         dialogRef.afterClosed().subscribe(dependent => {
-          if (dependent) {
-            this.getContactList();
-          }
+            if (dependent) {
+                this.getContactList();
+            }
         });
-      }
+    }
+
+    deleteContact(id: string) {
+        const options = {
+            data: {
+                title: 'Atenção',
+                subtitle: 'Você tem certeza que deseja excluir esse contato?',
+            },
+            panelClass: 'confirm-modal',
+            
+        };
+
+        this.dialogService.open(options);
+
+        this.dialogService.confirmed().subscribe(async confirmed => {
+            if (confirmed) {
+                try {
+                    let deleteDependent = await this.contactProvider.deleteContact(id);
+                    this.getContactList();
+                } catch (error) {
+                    console.log('ERROR 132' + error);
+                }
+            }
+        });
+    }
 }
 

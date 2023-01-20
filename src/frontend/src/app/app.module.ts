@@ -21,13 +21,15 @@ import { HomeComponent } from './pages/home/home.component';
 import { MatTableModule } from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import { HomeDialogComponent } from './pages/home/home-dialog/home-dialog.component';
+import { ConfirmDialogService } from 'src/services/confirn-dialog.service';
+import { ConfirmDialogModule } from './confirm-dialog/confirm-dialog.module';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
     SnackBarComponent,
-    HomeDialogComponent
+    HomeDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,9 +48,10 @@ import { HomeDialogComponent } from './pages/home/home-dialog/home-dialog.compon
     MatSidenavModule,
     MatSnackBarModule,
     MatTableModule,
-    MatDialogModule
+    ConfirmDialogModule,
+    MatDialogModule,
   ],
-  providers: [SnackBarService],
+  providers: [SnackBarService, ConfirmDialogService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
