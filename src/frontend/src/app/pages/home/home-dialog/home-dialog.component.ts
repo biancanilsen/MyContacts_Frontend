@@ -12,6 +12,7 @@ export class HomeDialogComponent {
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   contactForm!: FormGroup;
   method!: string | null;
+  contactId!: string | null;
 
   constructor(
     public dialogRef: MatDialogRef<HomeDialogComponent>,
@@ -27,31 +28,32 @@ export class HomeDialogComponent {
 
   initForm(): void {
     this.contactForm = this.fb.group({
+      id: this.data.id,
       nome: [null, Validators.required],
       telefone: [null, Validators.required],
       email: [null, Validators.required],
     });
     if (this.data) {
       this.contactForm.patchValue(this.data);
-    }else {
-      console.log('n pegou o data')
-
     }
   }
 
-  onNoClick(): void {
+  closeDialog(): void {
     this.dialogRef.close();
     sessionStorage.removeItem('method');
-    sessionStorage.removeItem('contact_id');
   }
 
-  save(){
-    console.log('passou pelo save')
-  }
-
+  async save() {
+    const data = this.contactForm.getRawValue();
+      try {
+          await this.contactProvider.updateContact(data);
+      } catch (error: any) {
+        console.log(error);
+      }
+    }
+    
   close() {
     this.dialogRef.close();
     sessionStorage.clear;
   }
-
 }

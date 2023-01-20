@@ -16,7 +16,6 @@ export class HomeComponent {
     dataContact: [] = [];
     method!: string;
     displayedColumns: string[] = ['nome', 'telefone', 'email', 'icon'];
-    contactId!: string;
     contact: any;
 
     constructor(
@@ -30,18 +29,11 @@ export class HomeComponent {
 
     async getContactList() {
         this.dataContact = await this.contactProvider.listContactsByUserId();
-        console.log("🚀 ~ file: home.component.ts:29 ~ HomeComponent ~ getContactList ~ this.dataContact", this.dataContact)
     }
 
-    onClick() {
-        window.open("URL");
-    }
-
-    getContacts(contactSelected: any, id: string) {
+    getContacts(contactSelected: any) {
         this.method = 'edit';
         sessionStorage.setItem('method', this.method);
-        this.contactId = id;
-        sessionStorage.setItem('contact_id', this.contactId);
         const dialogRef = this.dialog.open(HomeDialogComponent, {
             width: '500px',
             height: '400px',

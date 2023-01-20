@@ -3,9 +3,8 @@ const defaultApiReturn = require('../utils/defaultApiReturn');
 
 const validatePhone = async (req, res, next) => {
   try {
-    const { id, telefone } = req.body;
-
-    if (telefone.toString().trim().length !== 10) {
+    const { id, telefone } = req.body;    
+    if (telefone.toString().trim().length !== 11) {
       return res.status(400).json(defaultApiReturn({ error: { message: 'Número de telefone inválido.' } }));
     }
     
