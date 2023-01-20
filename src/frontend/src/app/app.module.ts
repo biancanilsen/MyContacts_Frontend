@@ -19,12 +19,15 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MatTableModule } from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog';
+import { EditContactDialogComponent } from './pages/home/edit-contact-dialog/edit-contact-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    SnackBarComponent
+    SnackBarComponent,
+    EditContactDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { MatTableModule } from '@angular/material/table';
     MatSidenavModule,
     MatSnackBarModule,
     MatTableModule,
+    MatDialogModule
   ],
   providers: [SnackBarService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
