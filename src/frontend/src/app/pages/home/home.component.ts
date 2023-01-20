@@ -2,6 +2,8 @@ import { Component, EventEmitter, OnInit, Output, ViewChild, ViewEncapsulation }
 import { FormGroup } from '@angular/forms';
 import { ContactProvider } from 'src/providers/contact.provider';
 import { MatTable } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { HomeDialogComponent } from './home-dialog/home-dialog.component';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -12,10 +14,13 @@ export class HomeComponent {
     @Output() onChange: EventEmitter<any> = new EventEmitter();
     @ViewChild('contactTable') contactTable!: MatTable<any>;
     dataContact: [] = [];
-
+    method!: string;
     displayedColumns: string[] = ['nome', 'telefone', 'email', 'icon'];
+    contactId!: string;
+    contact: any;
 
     constructor(
+        public dialog: MatDialog,
         private contactProvider: ContactProvider,
     ) { }
 
@@ -30,6 +35,23 @@ export class HomeComponent {
 
     onClick() {
         window.open("URL");
+    }
+
+    getContacts(contactSelected: any, id: string) {
+        this.method = 'edit';
+        sessionStorage.setItem('method', this.method);
+        this.contactId = id;
+        sessionStorage.setItem('contact_id', this.contactId);
+        const dialogRef = this.dialog.open(HomeDialogComponent, {
+            width: '500px',
+            height: '400px',
+            data: contactSelected,
+        });
+        dialogRef.afterClosed().subscribe(contact => {
+            if (contact) {
+                this.getContactList();
+            }
+        });
     }
 }
 

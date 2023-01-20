@@ -1,0 +1,57 @@
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ContactProvider } from 'src/providers/contact.provider';
+
+@Component({
+  selector: 'app-home-dialog',
+  templateUrl: './home-dialog.component.html',
+  styleUrls: ['./home-dialog.component.scss']
+})
+export class HomeDialogComponent {
+  @Output() onChange: EventEmitter<any> = new EventEmitter();
+  contactForm!: FormGroup;
+  method!: string | null;
+
+  constructor(
+    public dialogRef: MatDialogRef<HomeDialogComponent>,
+    private contactProvider: ContactProvider,
+    private fb: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ){}
+
+  ngOnInit(): void {
+    this.method = sessionStorage.getItem('method')!;
+    this.initForm();
+  }
+
+  initForm(): void {
+    this.contactForm = this.fb.group({
+      nome: [null, Validators.required],
+      telefone: [null, Validators.required],
+      email: [null, Validators.required],
+    });
+    if (this.data) {
+      this.contactForm.patchValue(this.data);
+    }else {
+      console.log('n pegou o data')
+
+    }
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+    sessionStorage.removeItem('method');
+    sessionStorage.removeItem('contact_id');
+  }
+
+  save(){
+    console.log('passou pelo save')
+  }
+
+  close() {
+    this.dialogRef.close();
+    sessionStorage.clear;
+  }
+
+}
