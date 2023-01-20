@@ -4,18 +4,17 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ContactProvider } from 'src/providers/contact.provider';
 
 @Component({
-  selector: 'app-home-dialog',
-  templateUrl: './home-dialog.component.html',
-  styleUrls: ['./home-dialog.component.scss']
+  selector: 'edit-contact-dialog',
+  templateUrl: './edit-contact-dialog.component.html',
+  styleUrls: ['./edit-contact-dialog.component.scss']
 })
-export class HomeDialogComponent {
+export class EditContactDialogComponent {
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   contactForm!: FormGroup;
   method!: string | null;
-  contactId!: string | null;
 
   constructor(
-    public dialogRef: MatDialogRef<HomeDialogComponent>,
+    public dialogRef: MatDialogRef<EditContactDialogComponent>,
     private contactProvider: ContactProvider,
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any

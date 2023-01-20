@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { ContactProvider } from 'src/providers/contact.provider';
 import { MatTable } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { HomeDialogComponent } from './home-dialog/home-dialog.component';
+import { EditContactDialogComponent } from './edit-contact-dialog/edit-contact-dialog.component';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -34,7 +34,7 @@ export class HomeComponent {
     getContacts(contactSelected: any) {
         this.method = 'edit';
         sessionStorage.setItem('method', this.method);
-        const dialogRef = this.dialog.open(HomeDialogComponent, {
+        const dialogRef = this.dialog.open(EditContactDialogComponent, {
             width: '500px',
             height: '400px',
             data: contactSelected,

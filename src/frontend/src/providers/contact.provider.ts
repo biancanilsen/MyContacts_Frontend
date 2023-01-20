@@ -13,21 +13,21 @@ export class ContactProvider {
 
   listContactsByUserId(): Promise<any> {
     return new Promise((resolve, reject) => {
-        this.apiGateway
-            .get('contacts/list-contacts')
-            .subscribe((response: HttpResponse<any>) => {
-                resolve(response.body.apiResponse);
-            }, reject);
-    });
-}
-
-updateContact(contact: any): Promise<any> {
-  return new Promise((resolve, reject) => {
       this.apiGateway
-          .put('contacts/update', contact)
-          .subscribe((response: HttpResponse<any>) => {
-              resolve(response.body);
-          }, reject);
-  });
-}
+        .get('contacts/list-contacts')
+        .subscribe((response: HttpResponse<any>) => {
+          resolve(response.body.apiResponse);
+        }, reject);
+    });
+  }
+
+  updateContact(contact: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.apiGateway
+        .put('contacts/update', contact)
+        .subscribe((response: HttpResponse<any>) => {
+          resolve(response.body);
+        }, reject);
+    });
+  }
 }
