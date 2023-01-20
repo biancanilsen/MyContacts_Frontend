@@ -21,6 +21,16 @@ export class ContactProvider {
     });
   }
 
+  saveNewContact(contact: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+        this.apiGateway
+            .post('contacts/register', contact)
+            .subscribe((response: HttpResponse<any>) => {
+                resolve(response.body);
+            }, reject);
+    });
+}
+
   updateContact(contact: any): Promise<any> {
     return new Promise((resolve, reject) => {
       this.apiGateway

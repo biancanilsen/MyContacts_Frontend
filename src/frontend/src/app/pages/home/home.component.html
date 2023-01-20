@@ -18,13 +18,13 @@
 
       <ng-container matColumnDef="icon">
         <th mat-header-cell *matHeaderCellDef  style="text-align: end">
-          <button class="add-button" mat-icon-button  >
+          <button class="add-button" mat-icon-button (click)="openDialog()"  >
             <mat-icon>add</mat-icon>
           </button>
         </th>
         <td class="button-tab" mat-cell *matCellDef="let contact">
           <button class="table-button" mat-button (click)="getContacts(contact)">
-            <mat-icon>edit</mat-icon>
+            <mat-icon class="icon-button">edit</mat-icon>
           </button>
           <a mat-flat-button class="wpp-button" href="https://wa.me/55{{contact.telefone}}" target="_blank">Wpp</a>
         </td>
