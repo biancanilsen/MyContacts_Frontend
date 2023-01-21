@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
 import { AuthProvider } from 'src/providers/auth.provider';
 import { SnackBarService } from 'src/services/snackbar.service';
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +17,7 @@ export class LoginComponent implements OnInit{
   loginForm!: FormGroup;
   form!: FormGroup;
   isLoading: boolean = false;
+  user: any
   public isLogged = false;
   public get fb(): FormBuilder {
     return this._fb;
@@ -28,6 +31,7 @@ export class LoginComponent implements OnInit{
     private authProvider: AuthProvider,
     private router: Router,
     private snackbarService: SnackBarService,
+    public dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {  
@@ -73,5 +77,13 @@ export class LoginComponent implements OnInit{
         );
       }
     }
+  }
+
+  openDialogCreateUser(userSelected: any){
+        this.dialog.open(LoginDialogComponent, {
+            width: '400px',
+            height: '380px',
+            data: userSelected,
+        });
   }
 }

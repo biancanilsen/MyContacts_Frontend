@@ -1,0 +1,40 @@
+<div id="LoginDialog" class="dialog">
+    <div class="content-scroll" *ngIf="userForm">
+      <div class="content-header" fxLayout="row">
+        <h2 class="title-content" mat-dialog-title>Criar conta</h2>
+        <button mat-icon-button class="mat-icon-content" (click)="close()">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </div>
+      <div class="dialog-content">
+        <mat-dialog-content class="mat-typography">
+          <form [formGroup]="userForm" fxLayout="column">
+            <div fxFlex="100" fxLayoutGap="16px">
+                <mat-form-field fxFlex="100" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput disableRipple formControlName="email" placeholder="Nome" />
+                  </mat-form-field>
+            </div>
+  
+            <div fxFlex="100" fxLayoutGap="16px">
+              <mat-form-field fxFlex="100" appearance="outline">
+                <mat-label>Senha</mat-label>
+                <input matInput disableRipple formControlName="password" placeholder="Nome" />
+              </mat-form-field>
+            </div>
+        </form>
+        </mat-dialog-content>
+        <mat-dialog-actions>
+          <div class="button-dialog">
+            <button mat-flat-button mat-dialog-close (click)="closeDialog()">
+              Cancelar
+            </button>
+            <button mat-flat-button [mat-dialog-close]="true" color="primary" [disabled]="userForm.invalid"
+              (click)="save()">
+              Salvar
+            </button>
+          </div>
+        </mat-dialog-actions>
+      </div>
+    </div>
+</div>

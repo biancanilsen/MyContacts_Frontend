@@ -19,4 +19,14 @@ export class UsersProvider {
         }, reject);
     });
 }
+
+saveNewUser(contact: any): Promise<any> {
+  return new Promise((resolve, reject) => {
+      this.apiGateway
+          .post('user/register', contact)
+          .subscribe((response: HttpResponse<any>) => {
+              resolve(response.body);
+          }, reject);
+  });
+}
 }
