@@ -1,4 +1,4 @@
-#editContactDialog{
+#HomeDialog{
     mat-dialog-content  {
         overflow: hidden !important;
         padding-left: 30px !important;
@@ -8,7 +8,7 @@
         border-radius: 30px;
         height: 100% !important;
         max-width: 500px;
-        border-color:#D55756;
+        border-color:#0261A6;
         width: 100%;
     
         p {
@@ -16,7 +16,7 @@
         }
     
         button.delete {
-            color: #D55756;
+            color: #0261A6;
         }
     
         .button-confirm {
@@ -42,7 +42,7 @@
       }
   
       .content-header{
-          background-color:#D55756;
+          background-color:#0261A6;
           height: 100% !important;
           height: 70px !important;
       }

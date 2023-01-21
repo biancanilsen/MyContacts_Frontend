@@ -40,4 +40,14 @@ export class ContactProvider {
         }, reject);
     });
   }
+
+  deleteContact(id: string | null): Promise<any> {
+    return new Promise((resolve, reject) => {
+        this.apiGateway
+            .delete('contacts/:id', { id: id })
+            .subscribe((response: HttpResponse<any>) => {
+                resolve(response.body);
+            }, reject);
+    });
+}
 }
