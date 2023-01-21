@@ -21,7 +21,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MatTableModule } from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import { HomeDialogComponent } from './pages/home/home-dialog/home-dialog.component';
-import { ConfirmDialogService } from 'src/services/confirn-dialog.service';
+import { ConfirmDialogService } from 'src/services/confirm-dialog.service';
 import { ConfirmDialogModule } from './confirm-dialog/confirm-dialog.module';
 @NgModule({
   declarations: [

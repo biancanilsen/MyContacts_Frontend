@@ -5,7 +5,7 @@ import { MatTable } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { HomeDialogComponent } from './home-dialog/home-dialog.component';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
-import { ConfirmDialogService } from 'src/services/confirn-dialog.service';
+import { ConfirmDialogService } from 'src/services/confirm-dialog.service';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -70,8 +70,7 @@ export class HomeComponent {
                 title: 'Atenção',
                 subtitle: 'Você tem certeza que deseja excluir esse contato?',
             },
-            panelClass: 'confirm-modal',
-            
+            panelClass: 'confirm-modal', 
         };
 
         this.dialogService.open(options);
@@ -79,7 +78,7 @@ export class HomeComponent {
         this.dialogService.confirmed().subscribe(async confirmed => {
             if (confirmed) {
                 try {
-                    let deleteDependent = await this.contactProvider.deleteContact(id);
+                    await this.contactProvider.deleteContact(id);
                     this.getContactList();
                 } catch (error) {
                     console.log('ERROR 132' + error);

@@ -10,7 +10,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class ConfirmDialogComponent implements OnInit {
   public titleMessage: string = '';
   public domain: string = '';
-  public subtitleMessage: string = '';
+  public messageSubtitle: string = '';
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -18,7 +18,7 @@ export class ConfirmDialogComponent implements OnInit {
   ) {}
   ngOnInit() {
     this.titleMessage = this.data.title;
-    this.subtitleMessage = this.data.subtitle;
+    this.messageSubtitle = this.data.subtitle;
     this.domain = this.data.domain;
   }
 }
