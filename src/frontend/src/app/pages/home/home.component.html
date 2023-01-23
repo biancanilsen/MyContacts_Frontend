@@ -1,4 +1,9 @@
 <div id="contactList" class="page">
+  <div class="logout-button-container">
+    <button mat-fab class="logout-button" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
   <div class="table-contacts mat-elevation-z8" fxLayout="column">
     <table mat-table [dataSource]="dataContact" class="mat-elevation-z8">
       <ng-container matColumnDef="nome">

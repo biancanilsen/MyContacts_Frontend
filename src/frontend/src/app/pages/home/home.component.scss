@@ -1,19 +1,23 @@
 #contactList {
   padding-bottom: 10px;
-  max-width: 1650px;
 
   .form-tab {
     margin-top: 20px;
   }
 
+  .logout-button{
+    background-color: #0261A6;
+    margin-left: 96.5% !important;
+  }
+
   .table-contacts {
-    margin-top: 10%;
-    overflow: auto;
+    margin-top: 2%;
     height: 100%;
-    max-height: 570px !important;
+    max-height: 790px !important;
+    overflow: auto;
     width: 100%;
     border-radius: 20px;
-    margin-left: 8%;
+    padding: 0;
 
     .mat-column-icon {
       width: 50px;
@@ -27,7 +31,7 @@
     tr:hover {
       background: #d0e7ef !important;
     }
-   
+
     .mat-tab-label-active {
       border-bottom: 2px solid #0261A6;
       opacity: 1 !important;
@@ -51,24 +55,24 @@
 
     table {
       width: 100%;
-      max-width: 500px;
+      max-width: 1650px;
       background: white;
       border-radius: 32px;
     }
   }
 
-  .add-button{
+  .add-button {
     margin-right: 10px;
   }
 
-  a{
-    background-color:#25D366;
-    color:#ffffff;
+  a {
+    background-color: #25D366;
+    color: #ffffff;
     border-radius: 30px;
   }
 
-  .icon-button{
-    color:#0261A6;
+  .icon-button {
+    color: #0261A6;
   }
-  
+
 }

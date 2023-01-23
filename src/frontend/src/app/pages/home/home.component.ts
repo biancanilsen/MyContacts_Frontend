@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { HomeDialogComponent } from './home-dialog/home-dialog.component';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 import { ConfirmDialogService } from 'src/services/confirm-dialog.service';
+import { UserService } from 'src/services/user.service';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -19,14 +20,20 @@ export class HomeComponent {
     method!: string;
     displayedColumns: string[] = ['nome', 'telefone', 'email', 'icon'];
     contact: any;
+    token!: string;
 
     constructor(
         public dialog: MatDialog,
         private contactProvider: ContactProvider,
         private dialogService: ConfirmDialogService,
+        private userService: UserService,
     ) { }
 
     ngOnInit(): void {
+        this.token = localStorage.getItem('token')!;
+        if (!this.token) {
+            location.replace('http://localhost:4200/login');
+          }
         this.getContactList();
     }
 
@@ -86,5 +93,8 @@ export class HomeComponent {
             }
         });
     }
-}
 
+    logout(){
+    this.userService.logout();
+    }
+}
