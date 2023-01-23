@@ -12,9 +12,6 @@ export class UserService {
 
   logout(): void {
     localStorage.clear();
-    localStorage.removeItem('token');
-    this.loggedChanged.next(false);
-    this.isLogged = false;
     location.replace(`http://localhost:4200/login`);
   }
 }

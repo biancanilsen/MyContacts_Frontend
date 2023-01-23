@@ -20,15 +20,20 @@ export class HomeComponent {
     method!: string;
     displayedColumns: string[] = ['nome', 'telefone', 'email', 'icon'];
     contact: any;
+    token!: string;
 
     constructor(
         public dialog: MatDialog,
         private contactProvider: ContactProvider,
         private dialogService: ConfirmDialogService,
-        private userService: UserService
+        private userService: UserService,
     ) { }
 
     ngOnInit(): void {
+        this.token = localStorage.getItem('token')!;
+        if (!this.token) {
+            location.replace('http://localhost:4200/login');
+          }
         this.getContactList();
     }
 
