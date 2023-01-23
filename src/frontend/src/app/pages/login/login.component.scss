@@ -43,7 +43,7 @@
         max-height: 250px;
     }
 
-    button {
+    .w-100 {
         background-color: #46AFF5;
         text-align: center;
         color: white;
@@ -56,6 +56,15 @@
         margin: 0%;
       }
 
+      .create-user {
+        background-color: transparent;
+        color: white;
+        width: 100%;
+        max-width: 401px;
+        height: 48px;
+        margin: 0%;
+      }
+
     mat-form-field {
         color: #ffff !important;
         width: 100%;
@@ -63,6 +72,7 @@
         height: 100%;
         max-height: 85px;
         border-radius: 30px !important;
+        padding: 0 !important;
     }
 
     .mat-form-field-appearance-outline .mat-form-field-outline-thick {
@@ -101,5 +111,9 @@
 
     }
 
-
+    .create-user{
+        color: #ffff;
+        margin-top: 0px !important;
+        padding-bottom: 20px;
+    }
 }

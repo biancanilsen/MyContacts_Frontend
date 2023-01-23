@@ -19,10 +19,11 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MatTableModule } from '@angular/material/table';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { HomeDialogComponent } from './pages/home/home-dialog/home-dialog.component';
 import { ConfirmDialogService } from 'src/services/confirm-dialog.service';
 import { ConfirmDialogModule } from './confirm-dialog/confirm-dialog.module';
+import { LoginDialogComponent } from './pages/login/login-dialog/login-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { ConfirmDialogModule } from './confirm-dialog/confirm-dialog.module';
     HomeComponent,
     SnackBarComponent,
     HomeDialogComponent,
+    LoginDialogComponent 
   ],
   imports: [
     BrowserModule,
@@ -50,6 +52,7 @@ import { ConfirmDialogModule } from './confirm-dialog/confirm-dialog.module';
     MatTableModule,
     ConfirmDialogModule,
     MatDialogModule,
+    
   ],
   providers: [SnackBarService, ConfirmDialogService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -17,12 +17,11 @@
                 <input
                   matInput
                   formControlName="email"
-                  placeholder="Email"
+                  placeholder="Ex:teste@gmail.com"
                 />
 
               </mat-form-field>
             </p>
-            <p class="form">
               <mat-form-field class="input" appearance="outline">
                 <input
                   matInput
@@ -31,10 +30,13 @@
                   placeholder="Senha"
                 />
               </mat-form-field>
-            </p>
+            <!-- <u class="create-user" (click)="openDialogCreateUser()" >*Não possui conta? Clique aqui para se cadastrar</u> -->
+            <button  mat-flat-button class="create-user" (click)="openDialogCreateUser(user)">*Não possui conta? Clique aqui para se cadastrar</button>
+
             <button (click)="loginUser()" class="w-100" mat-raised-button>
               Entrar
             </button>
+        
           </form>
         </div>
       </div>
