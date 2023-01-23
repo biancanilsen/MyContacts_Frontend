@@ -31,8 +31,7 @@ import { LoginDialogComponent } from './pages/login/login-dialog/login-dialog.co
     HomeComponent,
     SnackBarComponent,
     HomeDialogComponent,
-    LoginDialogComponent
-    
+    LoginDialogComponent 
   ],
   imports: [
     BrowserModule,

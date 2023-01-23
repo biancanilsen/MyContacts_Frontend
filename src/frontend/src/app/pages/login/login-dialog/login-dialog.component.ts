@@ -25,7 +25,6 @@ export class LoginDialogComponent {
 
   initForm(): void {
     this.userForm = this.fb.group({
-      // id: this.data ? this.data.id : null,
       email: [null, Validators.required],
       password: [null, Validators.required],
     });
