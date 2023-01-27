@@ -15,6 +15,7 @@
             <p class="form">
               <mat-form-field appearance="outline">
                 <input
+                id="email-input"
                   matInput
                   formControlName="email"
                   placeholder="Ex:teste@gmail.com"
@@ -24,6 +25,7 @@
             </p>
               <mat-form-field class="input" appearance="outline">
                 <input
+                id="password-input"
                   matInput
                   formControlName="password"
                   type="password"
@@ -31,9 +33,9 @@
                 />
               </mat-form-field>
             <!-- <u class="create-user" (click)="openDialogCreateUser()" >*Não possui conta? Clique aqui para se cadastrar</u> -->
-            <button  mat-flat-button class="create-user" (click)="openDialogCreateUser(user)">*Não possui conta? Clique aqui para se cadastrar</button>
+            <button id="sigin-up-button"  mat-flat-button class="create-user" (click)="openDialogCreateUser(user)">*Não possui conta? Clique aqui para se cadastrar</button>
 
-            <button (click)="loginUser()" class="w-100" mat-raised-button>
+            <button id="enter-button" (click)="loginUser()" class="w-100" mat-raised-button>
               Entrar
             </button>
         
