@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthProvider } from 'src/providers/auth.provider';
 import { By } from '@angular/platform-browser';
 
-fdescribe('LoginComponent', () => {
+describe('LoginComponent', () => {
   let component: LoginComponent;
   let authProvider: AuthProvider;
   let fixture: ComponentFixture<LoginComponent>;
@@ -88,10 +88,16 @@ fdescribe('LoginComponent', () => {
     .toContain('Entrar');
   });
 
-  it('ele deve chamar um POST com o endpoint correto', () => {
-    const spy = spyOn(authProvider, 'post').and.callThrough();
-    component.onSubmit();
-    expect(spy).toHaveBeenCalled()
-  })
+  it('should call a POST', () => {
+    fixture.componentInstance.loginForm?.get('email')?.setValue('test@test.com');
+    fixture.componentInstance.loginForm?.get('password')?.setValue('test');
 
+    const spy = spyOn(authProvider, 'login').and.callThrough();
+
+    const button = fixture.debugElement.nativeElement.querySelector('#enter-button');
+    button.click();
+    
+    expect(spy).toHaveBeenCalled()
+    expect(spy).toHaveBeenCalledWith({ email: 'test@test.com', password: 'test' })
+  })
 });
