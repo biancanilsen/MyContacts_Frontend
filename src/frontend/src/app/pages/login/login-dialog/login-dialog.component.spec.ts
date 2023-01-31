@@ -13,10 +13,10 @@ import { UsersProvider } from 'src/providers/user.provider';
 import { SnackBarService } from 'src/services/snackbar.service';
 import { LoginDialogComponent } from './login-dialog.component';
 
-describe('LoginDialogComponent', () => {
+fdescribe('LoginDialogComponent', () => {
   let component: LoginDialogComponent;
-  let fixture: ComponentFixture<LoginDialogComponent>;
   let usersProvider: UsersProvider
+  let fixture: ComponentFixture<LoginDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -83,23 +83,28 @@ it('should have <button> with "Cancelar"', () => {
     .toContain('Cancelar');
   });
 
-  // it('should have <button> with "Salvar"', () => {
-  //   const button = fixture.debugElement.query (By.css('#save-register-button'));
-  //   expect((button.nativeElement as HTMLButtonElement).textContent)
-  //   .toContain('Salvar');
-  // });
+  it('should have <button> with "Salvar"', () => {
+    const button = fixture.debugElement.query (By.css('#save-register-button'));
+    expect((button.nativeElement as HTMLButtonElement).textContent)
+    .toContain('Salvar');
+  });
 
-  // it('should call a POST', () => {
-  //   fixture.componentInstance.userForm?.get('email')?.setValue('teste@test.com');
-  //   fixture.componentInstance.userForm?.get('password')?.setValue('teste');
+  it('should call a POST', () => {
+    fixture.componentInstance.userForm?.get('email')?.setValue('teste@register.com');
+    fixture.componentInstance.userForm?.get('password')?.setValue('register');
 
-  //   const spy = spyOn(usersProvider, 'saveNewUser').and.callThrough();
+    console.log('passou antes do spy')
+    const spy = spyOn(usersProvider, 'saveNewUser').and.callThrough();
+    console.log("🚀 ~ file: login-dialog.component.spec.ts:98 ~ it ~ saveNewUser", usersProvider.saveNewUser)
+    console.log('passou depois do spy')
 
-  //   const button = fixture.debugElement.nativeElement.querySelector('#save-register-button');
-  //   button.click();
+    const button = fixture.debugElement.nativeElement.querySelector('#save-register-button');
+    console.log(usersProvider)
+
+    button.click();
     
-  //   expect(spy).toHaveBeenCalled()
-  //   expect(spy).toHaveBeenCalledWith({ email: 'teste@test.com', password: 'teste' })
-  // })
+    expect(spy).toHaveBeenCalled()
+    // expect(spy).toHaveBeenCalledWith({ email: 'teste@register.com', password: 'register' })
+  })
 
 });

@@ -31,6 +31,7 @@ export class HomeComponent {
 
     ngOnInit(): void {
         this.token = localStorage.getItem('token')!;
+        console.log("🚀 ~ file: home.component.ts:34 ~ HomeComponent ~ ngOnInit ~ this.token", this.token)
         if (!this.token) {
             location.replace('http://localhost:4200/login');
           }

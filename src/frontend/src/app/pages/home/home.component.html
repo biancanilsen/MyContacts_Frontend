@@ -1,11 +1,11 @@
 <div id="contactList" class="page">
   <div class="logout-button-container">
-    <button mat-fab class="logout-button" (click)="logout()">
+    <button id="logout-button" mat-fab class="logout-button" (click)="logout()">
       <mat-icon>logout</mat-icon>
     </button>
   </div>
   <div class="table-contacts mat-elevation-z8" fxLayout="column">
-    <table mat-table [dataSource]="dataContact" class="mat-elevation-z8">
+    <table id="home-table" mat-table [dataSource]="dataContact" class="mat-elevation-z8">
       <ng-container matColumnDef="nome">
         <th mat-header-cell *matHeaderCellDef> Nome </th>
         <td mat-cell *matCellDef="let contact"> {{contact.nome}} </td>
@@ -23,18 +23,18 @@
 
       <ng-container matColumnDef="icon">
         <th mat-header-cell *matHeaderCellDef  style="text-align: end">
-          <button class="add-button" mat-icon-button (click)="openDialog()"  >
+          <button id="add-button" class="add-button" mat-icon-button (click)="openDialog()"  >
             <mat-icon>add</mat-icon>
           </button>
         </th>
         <td class="button-tab" mat-cell *matCellDef="let contact">
-          <button class="table-button" mat-button (click)="getContacts(contact)">
+          <button id="edit-button" class="table-button" mat-button (click)="getContacts(contact)">
             <mat-icon class="icon-button">edit</mat-icon>
           </button>
-          <button class="table-button" mat-button (click)="deleteContact(contact.id)">
+          <button id="delete-button" class="table-button" mat-button (click)="deleteContact(contact.id)">
             <mat-icon class="icon-button">delete</mat-icon>
           </button>
-          <a mat-flat-button class="wpp-button" href="https://wa.me/55{{contact.telefone}}" target="_blank">Wpp</a>
+          <a id="whatsapp-button" mat-flat-button class="wpp-button" href="https://wa.me/55{{contact.telefone}}" target="_blank">Wpp</a>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
