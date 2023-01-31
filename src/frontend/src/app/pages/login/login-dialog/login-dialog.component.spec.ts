@@ -89,22 +89,20 @@ it('should have <button> with "Cancelar"', () => {
     .toContain('Salvar');
   });
 
-  it('should call a POST', () => {
+  it('should call a POST to save a new user', () => {
+    //Arrange (Preparar)
     fixture.componentInstance.userForm?.get('email')?.setValue('teste@register.com');
     fixture.componentInstance.userForm?.get('password')?.setValue('register');
-
-    console.log('passou antes do spy')
     const spy = spyOn(usersProvider, 'saveNewUser').and.callThrough();
-    console.log("🚀 ~ file: login-dialog.component.spec.ts:98 ~ it ~ saveNewUser", usersProvider.saveNewUser)
-    console.log('passou depois do spy')
-
     const button = fixture.debugElement.nativeElement.querySelector('#save-register-button');
-    console.log(usersProvider)
+    fixture.componentInstance.userForm?.invalid
 
+    //Act (Agir após tudo preparado)
     button.click();
     
-    expect(spy).toHaveBeenCalled()
-    // expect(spy).toHaveBeenCalledWith({ email: 'teste@register.com', password: 'register' })
+    //Assert (Validar se o código agil como esperado)
+    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledWith({ email: 'teste@register.com', password: 'register' });
   })
 
 });
