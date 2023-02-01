@@ -43,6 +43,7 @@ export class HomeDialogComponent {
   }
 
   async save() {
+  console.log(`este é o valor de method ${this.method}`)
     const data = this.contactForm.getRawValue();
     if (this.method === 'add') {
       try {
@@ -53,6 +54,7 @@ export class HomeDialogComponent {
     }
     if (this.method === 'edit') {
       try {
+        console.log('cheguei aqui')
         await this.contactProvider.updateContact(data);
       } catch (error: any) {
         console.log(error);

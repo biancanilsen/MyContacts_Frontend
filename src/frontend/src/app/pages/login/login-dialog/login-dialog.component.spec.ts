@@ -13,7 +13,7 @@ import { UsersProvider } from 'src/providers/user.provider';
 import { SnackBarService } from 'src/services/snackbar.service';
 import { LoginDialogComponent } from './login-dialog.component';
 
-fdescribe('LoginDialogComponent', () => {
+describe('LoginDialogComponent', () => {
   let component: LoginDialogComponent;
   let usersProvider: UsersProvider
   let fixture: ComponentFixture<LoginDialogComponent>;
