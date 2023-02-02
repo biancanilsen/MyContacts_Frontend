@@ -1,7 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -12,9 +12,11 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HomeComponent } from './home.component';
 import { ConfirmDialogService } from 'src/services/confirm-dialog.service';
 import { By } from '@angular/platform-browser';
+import { ContactProvider } from 'src/providers/contact.provider';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
+  let contactProvider: ContactProvider
   let fixture: ComponentFixture<HomeComponent>;
 
   beforeEach(async () => {
@@ -32,7 +34,17 @@ describe('HomeComponent', () => {
         MatTableModule,
         RouterTestingModule
       ],
-      providers: [ConfirmDialogService]
+      providers: [
+        ConfirmDialogService,
+        {
+          provide: MatDialogRef,
+          useValue: { close: () => { } }
+        },
+        {
+          provide: MAT_DIALOG_DATA,
+          useValue: {}
+        }
+      ]
     })
       .compileComponents();
 
@@ -61,6 +73,7 @@ describe('HomeComponent', () => {
     localStorage.setItem('token', 'fakeTokenValue');
 
     fixture = TestBed.createComponent(HomeComponent);
+    contactProvider = TestBed.inject(ContactProvider);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -85,5 +98,17 @@ describe('HomeComponent', () => {
     expect((button.nativeElement as HTMLButtonElement).textContent)
     .toContain('add');
   });
+
+  it('should call updateContact method with expected values', () => {
+    //Arrange (Preparar)
+    const spy = spyOn(contactProvider, 'deleteContact').and.callThrough();
+    const button = fixture.debugElement.nativeElement.querySelector('#delete-update-contact-button');
+
+    //Act (Agir após tudo preparado)
+    button.click();
+
+    //Assert (Validar se o código agil como esperado)
+    expect(spy).toHaveBeenCalled();
+  })
 
 });

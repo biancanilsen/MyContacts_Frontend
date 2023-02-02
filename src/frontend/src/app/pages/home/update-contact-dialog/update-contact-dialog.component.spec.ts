@@ -14,7 +14,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ContactProvider } from 'src/providers/contact.provider';
 import { UpdateContactDialogComponent } from './update-contact-dialog.component';
 
-fdescribe('UpdateContactDialogComponent', () => {
+describe('UpdateContactDialogComponent', () => {
   let component: UpdateContactDialogComponent;
   let contactProvider: ContactProvider
   let fixture: ComponentFixture<UpdateContactDialogComponent>;
@@ -125,8 +125,8 @@ it('should have <button> with "Cancelar"', () => {
   it('should call updateContact method with expected values', () => {
     //Arrange (Preparar)
     fixture.componentInstance.contactForm?.get('nome')?.setValue('nomeTeste');
-    fixture.componentInstance.contactForm?.get('email')?.setValue('email@updateContact.com');
     fixture.componentInstance.contactForm?.get('telefone')?.setValue('47958745214');
+    fixture.componentInstance.contactForm?.get('email')?.setValue('email@updateContact.com');
     const spy = spyOn(contactProvider, 'updateContact').and.callThrough();
     const button = fixture.debugElement.nativeElement.querySelector('#save-update-contact-button');
 

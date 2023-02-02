@@ -43,7 +43,6 @@ export class UpdateContactDialogComponent {
   async save() {
     const data = this.contactForm.getRawValue();
     try {
-      console.log('cheguei aqui')
       await this.contactProvider.updateContact(data);
     } catch (error: any) {
       console.log(error);

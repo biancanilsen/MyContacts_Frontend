@@ -88,15 +88,17 @@ describe('LoginComponent', () => {
     .toContain('Entrar');
   });
 
-  it('should call a POST', () => {
+  it('should call login method with expected values', () => {
+     //Arrange (Preparar)
     fixture.componentInstance.loginForm?.get('email')?.setValue('test@test.com');
     fixture.componentInstance.loginForm?.get('password')?.setValue('test');
-
     const spy = spyOn(authProvider, 'login').and.callThrough();
-
     const button = fixture.debugElement.nativeElement.querySelector('#enter-button');
+   
+    //Act (Agir após tudo preparado)
     button.click();
     
+     //Assert (Validar se o código agil como esperado)
     expect(spy).toHaveBeenCalled()
     expect(spy).toHaveBeenCalledWith({ email: 'test@test.com', password: 'test' })
   })
