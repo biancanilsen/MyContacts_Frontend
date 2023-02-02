@@ -1,4 +1,5 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -7,19 +8,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
+import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ContactProvider } from 'src/providers/contact.provider';
-import { HomeDialogComponent } from './home-dialog.component';
+import { UpdateContactDialogComponent } from './update-contact-dialog.component';
 
-fdescribe('HomeDialogComponent', () => {
-  let component: HomeDialogComponent;
+fdescribe('UpdateContactDialogComponent', () => {
+  let component: UpdateContactDialogComponent;
   let contactProvider: ContactProvider
-  let fixture: ComponentFixture<HomeDialogComponent>;
+  let fixture: ComponentFixture<UpdateContactDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomeDialogComponent],
+      declarations: [UpdateContactDialogComponent],
       imports: [
         MatDialogModule,
         HttpClientTestingModule,
@@ -68,9 +70,9 @@ fdescribe('HomeDialogComponent', () => {
     spyOn(Storage.prototype, 'clear').and.callFake(mockLocalStorage.clear);
 
     localStorage.setItem('token', 'fakeTokenValue');
-    localStorage.setItem('method', 'edit');
+    
 
-    fixture = TestBed.createComponent(HomeDialogComponent);
+    fixture = TestBed.createComponent(UpdateContactDialogComponent);
     contactProvider = TestBed.inject(ContactProvider);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -78,6 +80,46 @@ fdescribe('HomeDialogComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have <h2> with "Editar contato"', () => {
+    const bannerDe: DebugElement = fixture.debugElement;
+    const bannerEl: HTMLElement = bannerDe.nativeElement;
+    const h2 = bannerEl.querySelector('h2')!;
+    expect(h2.textContent).toEqual('Editar contato');
+  });
+
+  it('should have <button> to leave with "cancel icon"', () => {
+    const button = fixture.debugElement.query (By.css('#cancel-edit-contact-button'));
+    expect((button.nativeElement as HTMLButtonElement).textContent)
+    .toContain('cancel');
+  });
+
+  it('should have <input> of "Nome', () => {
+    const input = fixture.debugElement.query (By.css('#name-update-contact-input'));
+    expect(input).toBeTruthy();
+  });
+
+  it('should have <input> of "Telefone', () => {
+    const input = fixture.debugElement.query (By.css('#phone-update-contact-input'));
+    expect(input).toBeTruthy();
+  });
+
+  it('should have <input> of "Email', () => {
+    const input = fixture.debugElement.query (By.css('#email-update-contact-input'));
+    expect(input).toBeTruthy();
+  });
+
+it('should have <button> with "Cancelar"', () => {
+    const button = fixture.debugElement.query (By.css('#cancel-update-contact-button'));
+    expect((button.nativeElement as HTMLButtonElement).textContent)
+    .toContain('Cancelar');
+  });
+
+  it('should have <button> with "Salvar"', () => {
+    const button = fixture.debugElement.query (By.css('#save-update-contact-button'));
+    expect((button.nativeElement as HTMLButtonElement).textContent)
+    .toContain('Salvar');
   });
 
   it('should call updateContact method with expected values', () => {

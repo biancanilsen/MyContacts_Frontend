@@ -4,24 +4,23 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ContactProvider } from 'src/providers/contact.provider';
 
 @Component({
-  selector: 'home-dialog',
-  templateUrl: './home-dialog.component.html',
-  styleUrls: ['./home-dialog.component.scss']
+  selector: 'app-create-contact-dialog',
+  templateUrl: './create-contact-dialog.component.html',
+  styleUrls: ['./create-contact-dialog.component.scss']
 })
-export class HomeDialogComponent {
+export class CreateContactDialogComponent {
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   contactForm!: FormGroup;
   method!: string | null;
 
   constructor(
-    public dialogRef: MatDialogRef<HomeDialogComponent>,
+    public dialogRef: MatDialogRef<CreateContactDialogComponent>,
     private contactProvider: ContactProvider,
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
   ngOnInit(): void {
-    this.method = sessionStorage.getItem('method')!;
     this.initForm();
   }
 
@@ -43,23 +42,12 @@ export class HomeDialogComponent {
   }
 
   async save() {
-  console.log(`este é o valor de method ${this.method}`)
     const data = this.contactForm.getRawValue();
-    if (this.method === 'add') {
       try {
         await this.contactProvider.saveNewContact(data);
       } catch (error: any) {
         console.log('ERROR 132' + error);
       }
-    }
-    if (this.method === 'edit') {
-      try {
-        console.log('cheguei aqui')
-        await this.contactProvider.updateContact(data);
-      } catch (error: any) {
-        console.log(error);
-      }
-    }
   }
 
   close() {
@@ -67,3 +55,4 @@ export class HomeDialogComponent {
     sessionStorage.clear;
   }
 }
+

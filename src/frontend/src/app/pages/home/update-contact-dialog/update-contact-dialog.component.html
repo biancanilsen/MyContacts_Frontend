@@ -1,8 +1,8 @@
-<div id="HomeDialog" class="dialog">
+<div id="updateContactDialog" class="dialog">
     <div class="content-scroll" *ngIf="contactForm">
       <div class="content-header" fxLayout="row">
         <h2 class="title-content" mat-dialog-title>Editar contato</h2>
-        <button mat-icon-button class="mat-icon-content" (click)="close()">
+        <button id="cancel-edit-contact-button" mat-icon-button class="mat-icon-content" (click)="close()">
           <mat-icon>cancel</mat-icon>
         </button>
       </div>
@@ -11,27 +11,27 @@
           <form [formGroup]="contactForm" fxLayout="column">
             <div fxFlex="100" fxLayoutGap="16px">
                 <mat-form-field fxFlex="100" appearance="outline">
-                    <mat-label>Name</mat-label>
-                    <input matInput disableRipple formControlName="nome" placeholder="Nome" />
+                    <mat-label>Nome</mat-label>
+                    <input id="name-update-contact-input" matInput disableRipple formControlName="nome" placeholder="Nome" />
                   </mat-form-field>
             </div>
   
             <div fxFlex="100" fxLayoutGap="16px">
               <mat-form-field fxFlex="50" appearance="outline">
                 <mat-label>Telefone</mat-label>
-                <input matInput disableRipple formControlName="telefone" placeholder="Nome" />
+                <input id="phone-update-contact-input" matInput disableRipple formControlName="telefone" placeholder="Nome" />
               </mat-form-field>
   
               <mat-form-field fxFlex="50" appearance="outline">
                 <mat-label>Email</mat-label>
-                <input matInput disableRipple formControlName="email" placeholder="Sobrenome" />
+                <input id="email-update-contact-input" matInput disableRipple formControlName="email" placeholder="Sobrenome" />
               </mat-form-field>
             </div>
         </form>
         </mat-dialog-content>
         <mat-dialog-actions>
           <div class="button-dialog">
-            <button id="close-dialog-button" mat-flat-button mat-dialog-close (click)="closeDialog()">
+            <button id="cancel-update-contact-button" mat-flat-button mat-dialog-close (click)="closeDialog()">
               Cancelar
             </button>
             <button id="save-update-contact-button" mat-flat-button [mat-dialog-close]="true" color="primary"

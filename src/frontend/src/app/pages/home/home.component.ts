@@ -3,8 +3,9 @@ import { FormGroup } from '@angular/forms';
 import { ContactProvider } from 'src/providers/contact.provider';
 import { MatTable } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { HomeDialogComponent } from './home-dialog/home-dialog.component';
+import { UpdateContactDialogComponent } from './update-contact-dialog/update-contact-dialog.component';
 import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
+import { CreateContactDialogComponent } from './create-contact-dialog/create-contact-dialog.component';
 import { ConfirmDialogService } from 'src/services/confirm-dialog.service';
 import { UserService } from 'src/services/user.service';
 @Component({
@@ -17,7 +18,6 @@ export class HomeComponent {
     @Output() onChange: EventEmitter<any> = new EventEmitter();
     @ViewChild('contactTable') contactTable!: MatTable<any>;
     dataContact: [] = [];
-    method!: string;
     displayedColumns: string[] = ['nome', 'telefone', 'email', 'icon'];
     contact: any;
     token!: string;
@@ -43,11 +43,9 @@ export class HomeComponent {
     }
 
     getContacts(contactSelected: any) {
-        this.method = 'edit';
-        sessionStorage.setItem('method', this.method);
-        const dialogRef = this.dialog.open(HomeDialogComponent, {
+        const dialogRef = this.dialog.open(UpdateContactDialogComponent, {
             width: '500px',
-            height: '400px',
+            height: '400px', 
             data: contactSelected,
         });
         dialogRef.afterClosed().subscribe(contact => {
@@ -58,9 +56,7 @@ export class HomeComponent {
     }
 
     openDialog() {
-        this.method = 'add';
-        sessionStorage.setItem('method', this.method);
-        const dialogRef = this.dialog.open(HomeDialogComponent, {
+        const dialogRef = this.dialog.open(CreateContactDialogComponent, {
             width: '500px',
             height: '400px',
         });
