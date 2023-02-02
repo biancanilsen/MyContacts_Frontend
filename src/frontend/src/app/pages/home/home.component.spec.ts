@@ -46,7 +46,7 @@ describe('HomeComponent', () => {
         }
       ]
     })
-      .compileComponents();
+    .compileComponents();
 
     let store: { [key: string]: string } = {};
     
@@ -99,7 +99,7 @@ describe('HomeComponent', () => {
     .toContain('add');
   });
 
-  it('should call updateContact method with expected values', () => {
+  it('should call updateContact method', () => {
     //Arrange (Preparar)
     const spy = spyOn(contactProvider, 'deleteContact').and.callThrough();
     const button = fixture.debugElement.nativeElement.querySelector('#delete-update-contact-button');

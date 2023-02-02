@@ -45,7 +45,7 @@ describe('UpdateContactDialogComponent', () => {
         }
       ]
     })
-      .compileComponents();
+    .compileComponents();
 
     let store: { [key: string]: string } = {};
 
@@ -71,7 +71,6 @@ describe('UpdateContactDialogComponent', () => {
 
     localStorage.setItem('token', 'fakeTokenValue');
     
-
     fixture = TestBed.createComponent(UpdateContactDialogComponent);
     contactProvider = TestBed.inject(ContactProvider);
     component = fixture.componentInstance;

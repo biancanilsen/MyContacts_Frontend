@@ -89,7 +89,7 @@ it('should have <button> with "Cancelar"', () => {
     .toContain('Salvar');
   });
 
-  it('should call a POST to save a new user', () => {
+  it('should call saveNewUser method with expected values', () => {
     //Arrange (Preparar)
     fixture.componentInstance.userForm?.get('email')?.setValue('teste@register.com');
     fixture.componentInstance.userForm?.get('password')?.setValue('register');
