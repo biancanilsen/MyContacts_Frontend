@@ -24,13 +24,11 @@ export class LoginDialogComponent {
   }
 
   initForm(): void {
+    
     this.userForm = this.fb.group({
-      email: [null, Validators.required],
-      password: [null, Validators.required],
+      email: ['', [Validators.email, Validators.required]],
+      password: ['', Validators.required],
     });
-    if (this.data) {
-      this.userForm.patchValue(this.data);
-    }
   }
 
   closeDialog(): void {

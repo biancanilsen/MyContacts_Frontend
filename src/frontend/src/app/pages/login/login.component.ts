@@ -56,7 +56,6 @@ export class LoginComponent implements OnInit{
 
   async onSubmit(): Promise<void> {
     if(this.loginForm.valid){
-
       const formData = this.loginForm.getRawValue();
       const data = {
         email: formData.email,
