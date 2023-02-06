@@ -101,12 +101,3 @@ describe('deleteContact', () => {
     expect(Contacts.update).not.toHaveBeenCalled();
   });
 });
-
-
-
-
-
-
-
-
-
