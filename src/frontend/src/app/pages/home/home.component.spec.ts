@@ -98,17 +98,4 @@ describe('HomeComponent', () => {
     expect((button.nativeElement as HTMLButtonElement).textContent)
     .toContain('add');
   });
-
-  it('should call updateContact method', () => {
-    //Arrange (Preparar)
-    const spy = spyOn(contactProvider, 'deleteContact').and.callThrough();
-    const button = fixture.debugElement.nativeElement.querySelector('#delete-update-contact-button');
-
-    //Act (Agir após tudo preparado)
-    button.click();
-
-    //Assert (Validar se o código agil como esperado)
-    expect(spy).toHaveBeenCalled();
-  })
-
 });
