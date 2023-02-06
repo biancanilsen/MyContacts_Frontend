@@ -11,7 +11,7 @@ jest.mock('../../../services/userService', () => {
 jest.spyOn(console, 'error').mockImplementation(() => {});
 
 describe('UserController', () => {
-    it('creates a new user with the provided data', async () => {
+    it('Should create a new user with the provided data', async () => {
       const req = {
         body: {
           email: 'johndoe@example.com',
@@ -31,7 +31,7 @@ describe('UserController', () => {
       expect(res.json).toHaveBeenCalledWith(defaultApiReturn({}));
     });
   
-    it('returns an error if the email is already registered', async () => {
+    it('Should return an error if the email is already registered', async () => {
       const req = {
         body: {
           email: 'johndoe@example.com',
@@ -51,7 +51,7 @@ describe('UserController', () => {
       expect(res.json).toHaveBeenCalledWith(defaultApiReturn({ error: { message: 'E-mail já cadastrado'} }));
     });
   
-    it('returns an error if something goes wrong', async () => {
+    it('Should return an error if something goes wrong', async () => {
       const req = {
         body: {
           email: 'johndoe@example.com',

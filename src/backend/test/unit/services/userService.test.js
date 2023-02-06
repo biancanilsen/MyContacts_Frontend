@@ -1,5 +1,6 @@
 process.env.JWT_SECRET = 'secret-key';
 const { User } = require('../../../database/models');
+const { createNewUser } = require('../../../services/userService');
 
 jest.mock('../../../database/models', () => ({
   User: {
@@ -8,15 +9,13 @@ jest.mock('../../../database/models', () => ({
   },
 }));
 
-const { createNewUser } = require('../../../services/userService');
-
 describe('createNewUser', () => {
   beforeEach(() => {
     User.findOne.mockReset();
     User.create.mockReset();
   });
 
-  it('returns null when a user with the same email already exists', async () => {
+  it('Should returns null when a user with the same email already exists', async () => {
     User.findOne.mockResolvedValue({ id: 1, email: 'test@example.com' });
     const result = await createNewUser({ email: 'test@example.com', password: 'password' });
     expect(result).toBe(null);
@@ -26,7 +25,7 @@ describe('createNewUser', () => {
     expect(User.create).not.toHaveBeenCalled();
   });
 
-  it('creates a new user when the email is not in use', async () => {
+  it('Should create a new user when the email is not in use', async () => {
     User.findOne.mockResolvedValue(null);
     User.create.mockResolvedValue({ id: 1, email: 'test@example.com', password: 'password' });
     const result = await createNewUser({ email: 'test@example.com', password: 'password' });
