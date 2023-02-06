@@ -1,32 +1,39 @@
 process.env.JWT_SECRET = 'secret-key';
+const { User } = require('../../../database/models');
 
-const User = {
-  findOne: jest.fn(),
-  create: jest.fn(),
-};
+jest.mock('../../../database/models', () => ({
+  User: {
+    findOne: jest.fn(),
+    create: jest.fn(),
+  },
+}));
 
-
-const createNewUser = async ({ email, password }) => {
-  const userExist = await User.findOne({ where: { email } });
-  if (userExist) return null;
-  const newUser = await User.create({ email, password });
-  return newUser;
-};
+const { createNewUser } = require('../../../services/userService');
 
 describe('createNewUser', () => {
-  it('returns null when the user is found', async () => {
-    User.findOne.mockResolvedValue(null);
-    const result = await createNewUser({ email: 'user@example.com' });
-    expect(result).toBe(undefined);
-    expect(User.findOne).toHaveBeenCalledWith({ where: { email: 'user@example.com' } });
+  beforeEach(() => {
+    User.findOne.mockReset();
+    User.create.mockReset();
   });
 
-  it('creates a new user when the user is not found', async () => {
+  it('returns null when a user with the same email already exists', async () => {
+    User.findOne.mockResolvedValue({ id: 1, email: 'test@example.com' });
+    const result = await createNewUser({ email: 'test@example.com', password: 'password' });
+    expect(result).toBe(null);
+    expect(User.findOne).toHaveBeenCalledWith({
+      where: { email: 'test@example.com' },
+    });
+    expect(User.create).not.toHaveBeenCalled();
+  });
+
+  it('creates a new user when the email is not in use', async () => {
     User.findOne.mockResolvedValue(null);
-    User.create.mockResolvedValue({ email: 'newuser@example.com', password: 'secret' });
-    const result = await createNewUser({ email: 'newuser@example.com', password: 'secret' });
-    expect(result).toEqual({ email: 'newuser@example.com', password: 'secret' });
-    expect(User.findOne).toHaveBeenCalledWith({ where: { email: 'newuser@example.com' } });
-    expect(User.create).toHaveBeenCalledWith({ email: 'newuser@example.com', password: 'secret' });
+    User.create.mockResolvedValue({ id: 1, email: 'test@example.com', password: 'password' });
+    const result = await createNewUser({ email: 'test@example.com', password: 'password' });
+    expect(result).toEqual({ id: 1, email: 'test@example.com', password: 'password' });
+    expect(User.findOne).toHaveBeenCalledWith({
+      where: { email: 'test@example.com' },
+    });
+    expect(User.create).toHaveBeenCalledWith({ email: 'test@example.com', password: 'password' });
   });
 });

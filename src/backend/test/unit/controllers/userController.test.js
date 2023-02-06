@@ -8,6 +8,8 @@ jest.mock('../../../services/userService', () => {
   };
 });
 
+jest.spyOn(console, 'error').mockImplementation(() => {});
+
 describe('UserController', () => {
     it('creates a new user with the provided data', async () => {
       const req = {
@@ -49,23 +51,23 @@ describe('UserController', () => {
       expect(res.json).toHaveBeenCalledWith(defaultApiReturn({ error: { message: 'E-mail já cadastrado'} }));
     });
   
-    // it('returns an error if something goes wrong', async () => {
-    //   const req = {
-    //     body: {
-    //       email: 'johndoe@example.com',
-    //       password: 'secret123'
-    //     }
-    //   };
-    //   const res = {
-    //     status: jest.fn().mockReturnThis(),
-    //     json: jest.fn()
-    //   };
-    //   userService.createNewUser.mockRejectedValue(new Error('Something went wrong'));
+    it('returns an error if something goes wrong', async () => {
+      const req = {
+        body: {
+          email: 'johndoe@example.com',
+          password: 'secret123'
+        }
+      };
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn()
+      };
+      userService.createNewUser.mockRejectedValue(new Error('Something went wrong'));
   
-    //   await UserController(req, res);
+      await UserController(req, res);
   
-    //   expect(userService.createNewUser).toHaveBeenCalledWith({ email: 'johndoe@example.com', password: 'secret123' });
-    //   expect(res.status).toHaveBeenCalledWith(500);
-    //   expect(res.json).toHaveBeenCalledWith(defaultApiReturn({ error: { message: 'Algo deu errado, tente novamente.' } }));
-    // });
+      expect(userService.createNewUser).toHaveBeenCalledWith({ email: 'johndoe@example.com', password: 'secret123' });
+      expect(res.status).toHaveBeenCalledWith(500);
+      expect(res.json).toHaveBeenCalledWith(defaultApiReturn({ error: { message: 'Algo deu errado, tente novamente.' } }));
+    });
   });
