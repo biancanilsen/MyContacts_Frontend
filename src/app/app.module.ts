@@ -14,17 +14,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
-import { SnackBarService } from 'src/services/snackbar.service';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MatTableModule } from '@angular/material/table';
 import {MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { UpdateContactDialogComponent } from './pages/home/update-contact-dialog/update-contact-dialog.component';
-import { ConfirmDialogService } from 'src/services/confirm-dialog.service';
 import { ConfirmDialogModule } from './confirm-dialog/confirm-dialog.module';
 import { LoginDialogComponent } from './pages/login/login-dialog/login-dialog.component';
 import { CreateContactDialogComponent } from './pages/home/create-contact-dialog/create-contact-dialog.component';
+import { SnackBarService } from '../services/snackbar.service';
+import { ConfirmDialogService } from '../services/confirm-dialog.service';
+
 @NgModule({
   declarations: [
     AppComponent,

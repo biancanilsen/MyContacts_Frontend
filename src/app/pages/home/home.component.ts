@@ -1,13 +1,11 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { ContactProvider } from 'src/providers/contact.provider';
+import { Component, EventEmitter, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ContactProvider } from '../../../providers/contact.provider';
 import { MatTable } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateContactDialogComponent } from './update-contact-dialog/update-contact-dialog.component';
-import { ConfirmDialogComponent } from 'src/app/confirm-dialog/confirm-dialog.component';
 import { CreateContactDialogComponent } from './create-contact-dialog/create-contact-dialog.component';
-import { ConfirmDialogService } from 'src/services/confirm-dialog.service';
-import { UserService } from 'src/services/user.service';
+import { ConfirmDialogService } from '../../../services/confirm-dialog.service';
+import { UserService } from '../../../services/user.service';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -33,7 +31,7 @@ export class HomeComponent {
         this.token = localStorage.getItem('token')!;
         if (!this.token) {
             location.replace('http://localhost:4200/login');
-          }
+        }
         this.getContactList();
     }
 
@@ -44,7 +42,7 @@ export class HomeComponent {
     getContacts(contactSelected: any) {
         const dialogRef = this.dialog.open(UpdateContactDialogComponent, {
             width: '500px',
-            height: '400px', 
+            height: '400px',
             data: contactSelected,
         });
         dialogRef.afterClosed().subscribe(contact => {
@@ -73,7 +71,7 @@ export class HomeComponent {
                 title: 'Atenção',
                 subtitle: 'Você tem certeza que deseja excluir esse contato?',
             },
-            panelClass: 'confirm-modal', 
+            panelClass: 'confirm-modal',
         };
 
         this.dialogService.open(options);
@@ -90,7 +88,7 @@ export class HomeComponent {
         });
     }
 
-    logout(){
-    this.userService.logout();
+    logout() {
+        this.userService.logout();
     }
 }
