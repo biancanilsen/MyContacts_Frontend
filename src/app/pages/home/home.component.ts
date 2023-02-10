@@ -6,6 +6,7 @@ import { UpdateContactDialogComponent } from './update-contact-dialog/update-con
 import { CreateContactDialogComponent } from './create-contact-dialog/create-contact-dialog.component';
 import { ConfirmDialogService } from '../../../services/confirm-dialog.service';
 import { UserService } from '../../../services/user.service';
+import { environment } from 'src/environments/environment';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -30,7 +31,7 @@ export class HomeComponent {
     ngOnInit(): void {
         this.token = localStorage.getItem('token')!;
         if (!this.token) {
-            location.replace('http://localhost:4200/login');
+            location.replace(environment.loginRoute);
         }
         this.getContactList();
     }

@@ -12,6 +12,6 @@ export class UserService {
 
   logout(): void {
     localStorage.clear();
-    location.replace(`http://localhost:4200/login`);
+    location.replace(environment.loginRoute);
   }
 }
