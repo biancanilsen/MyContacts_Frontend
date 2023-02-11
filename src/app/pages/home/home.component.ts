@@ -32,6 +32,7 @@ export class HomeComponent {
         this.token = localStorage.getItem('token')!;
         if (!this.token) {
             location.replace(environment.loginRoute);
+            console.log("🚀 ~ file: home.component.ts:35 ~ HomeComponent ~ ngOnInit ~ environment.loginRoute", environment.loginRoute)
         }
         this.getContactList();
     }
