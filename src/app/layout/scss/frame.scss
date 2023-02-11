@@ -1,0 +1,16 @@
+.envolti-btn.mat-raised-button {
+  background-color: #753bbd;
+  text-align: center;
+  color: white;
+  height: 52px;
+}
+
+.envolti-btn.mat-raised-button:hover {
+  background-color: #a964e2;
+  transition: background-color 0.5s ease;
+}
+
+.envolti-btn.mat-raised-button:disabled {
+  background-color: #35096b;
+  opacity: 0.5;
+}

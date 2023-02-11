@@ -1,0 +1,12 @@
+<div id="confirm-delete-modal" style="width: 350px; height: 160px" mat-dialog-content>
+  <h3 fxLayoutAlign="center center" matDialogTitle>{{ titleMessage }}</h3>
+  <p>{{ messageSubtitle }}</p>
+</div>
+<div fxLayoutAlign="center center" mat-dialog-actions class="button-confirm" fxLayout="row">
+  <button id="delete-update-contact-button" mat-flat-button class="button-ok"  style="background-color: #25D366; color: white" (click)="dialogRef.close(true)">
+    Sim
+  </button>
+  <button mat-flat-button style="background-color: #B40000; color: white"  (click)="dialogRef.close(false)">
+    Não
+  </button>
+</div>

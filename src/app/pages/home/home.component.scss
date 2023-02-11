@@ -1,0 +1,78 @@
+#contactList {
+  padding-bottom: 10px;
+
+  .form-tab {
+    margin-top: 20px;
+  }
+
+  .logout-button{
+    background-color: #0261A6;
+    margin-left: 96.5% !important;
+  }
+
+  .table-contacts {
+    margin-top: 2%;
+    height: 100%;
+    max-height: 790px !important;
+    overflow: auto;
+    width: 100%;
+    border-radius: 20px;
+    padding: 0;
+
+    .mat-column-icon {
+      width: 50px;
+    }
+
+    .button-tab {
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    tr:hover {
+      background: #d0e7ef !important;
+    }
+
+    .mat-tab-label-active {
+      border-bottom: 2px solid #0261A6;
+      opacity: 1 !important;
+    }
+
+    .mat-ink-bar {
+      height: 0px !important;
+    }
+
+    table th {
+      overflow: hidden;
+      color: white;
+      border: 1px solid #0261A6;
+      background: #0261A6;
+    }
+
+    table td {
+      height: 48px;
+      color: black;
+    }
+
+    table {
+      width: 100%;
+      max-width: 1650px;
+      background: white;
+      border-radius: 32px;
+    }
+  }
+
+  .add-button {
+    margin-right: 10px;
+  }
+
+  a {
+    background-color: #25D366;
+    color: #ffffff;
+    border-radius: 30px;
+  }
+
+  .icon-button {
+    color: #0261A6;
+  }
+
+}

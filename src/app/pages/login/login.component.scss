@@ -1,0 +1,119 @@
+#login-page {
+    width: 100%;
+    background-image: url(../../../assets/login-background.png);
+    background-color: #0261A6;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh !important;
+
+    .login-text {
+        margin-top: 30px;
+        font-size: 19.7px;
+        margin-bottom: 30px;
+        color: #ffff   !important;
+    }
+
+    .login-wrapper {
+        margin-left: 10%;
+        margin-top: 10%;
+
+        h2 {
+            color: #ffff !important;
+            font-size: 62px;
+            font-weight: bold;
+        }
+
+        .form {
+            font-size: 20px;
+            height: 100px;
+        }
+    }
+
+    .login-form {
+        width: 100%;
+    }
+
+    .logo {
+        margin-top: 25px;
+        margin-left: 10.5%;
+        width: 100%;
+        max-width: 120px;
+        max-height: 150px;
+    }
+
+    .w-100 {
+        background-color: #46AFF5;
+        text-align: center;
+        color: white;
+        width: 100%;
+        max-width: 400px;
+        margin-left: 15%;
+        border-radius: 13px;
+        height: 48px;
+        border: 1px solid #46AFF5;
+        margin: 0%;
+      }
+
+      .create-user {
+        background-color: transparent;
+        color: white;
+        width: 100%;
+        max-width: 401px;
+        height: 48px;
+        margin: 0%;
+      }
+
+    mat-form-field {
+        color: #ffff !important;
+        width: 100%;
+        max-width: 400px;
+        height: 100%;
+        max-height: 85px;
+        border-radius: 30px !important;
+        padding: 0 !important;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+        color: #ffff !important;
+        border-radius: 20px !important;
+    }
+
+    .mat-form-field-appearance-outline .mat-form-field-outline {
+        color: #ffff !important;
+        border-radius: 20px !important;
+    }
+
+    .mat-form-field-outline-end {
+        border-radius: 0 20px 20px 0 !important;
+    }
+
+    .mat-input-placeholder-wrapper {
+        top: -1em;
+    }
+
+    .mat-input-element {
+        margin-bottom: 7px !important;
+    }
+
+    .mat-form-field-outline,
+    .mat-form-field-empty.mat-form-field-label,
+    .mat-form-field-label,
+    .mat-form-field-underline,
+    .mat-input-element,
+    ::placeholder {
+        color: #fff !important;
+    }
+    
+    @media screen and (max-width: 1265px) {
+        background-image: none;
+
+    }
+
+    .create-user{
+        color: #ffff;
+        margin-top: 0px !important;
+        padding-bottom: 20px;
+    }
+}

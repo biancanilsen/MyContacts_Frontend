@@ -1,0 +1,43 @@
+<div id="contactList" class="page">
+  <div class="logout-button-container">
+    <button id="logout-button" mat-fab class="logout-button" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+  <div class="table-contacts mat-elevation-z8" fxLayout="column">
+    <table id="home-table" mat-table [dataSource]="dataContact" class="mat-elevation-z8">
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let contact"> {{contact.nome}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="telefone">
+        <th mat-header-cell *matHeaderCellDef> Telefone </th>
+        <td mat-cell *matCellDef="let contact"> {{contact.telefone}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let contact"> {{contact.email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="icon">
+        <th mat-header-cell *matHeaderCellDef  style="text-align: end">
+          <button id="add-button" class="add-button" mat-icon-button (click)="openDialog()"  >
+            <mat-icon>add</mat-icon>
+          </button>
+        </th>
+        <td class="button-tab" mat-cell *matCellDef="let contact">
+          <button id="edit-button" class="table-button" mat-button (click)="getContacts(contact)">
+            <mat-icon class="icon-button">edit</mat-icon>
+          </button>
+          <button id="delete-update-contact-button" class="table-button" mat-button (click)="deleteContact(contact.id)">
+            <mat-icon class="icon-button">delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
