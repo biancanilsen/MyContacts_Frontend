@@ -9,7 +9,7 @@
     "ng": "ng",
     "start": "ng serve",
     "heroku-postbuild": "ng serve --configuration production",
-    "start:prod": "ng serve --configuration production",
+    "start:prod": "ng build --prod",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -20,6 +20,7 @@
     "@angular/cdk": "^15.1.4",
     "@angular/common": "^15.1.4",
     "@angular/compiler": "^15.1.4",
+    "@angular/cli": "^15.1.5",
     "@angular/compiler-cli": "^15.1.4",
     "@angular/core": "^15.1.4",
     "@angular/flex-layout": "^15.0.0-beta.42",
