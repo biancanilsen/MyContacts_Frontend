@@ -31,6 +31,9 @@
               <mat-error *ngIf="userForm &&
                 userForm.controls['password'].hasError('required')">
                 Campo obrigatório </mat-error>
+                <mat-error *ngIf="userForm &&
+                userForm.controls['password'].hasError('minLength')">
+                Mínimo 3 caracteres</mat-error>
             </mat-form-field>
           </div>
         </form>
