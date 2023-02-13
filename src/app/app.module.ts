@@ -25,7 +25,7 @@ import { LoginDialogComponent } from './pages/login/login-dialog/login-dialog.co
 import { CreateContactDialogComponent } from './pages/home/create-contact-dialog/create-contact-dialog.component';
 import { SnackBarService } from '../services/snackbar.service';
 import { ConfirmDialogService } from '../services/confirm-dialog.service';
-import { NgxMaskModule} from 'ngx-mask/lib/ngx-mask.module';
+import { provideEnvironmentNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -56,9 +56,8 @@ import { NgxMaskModule} from 'ngx-mask/lib/ngx-mask.module';
     MatTableModule,
     ConfirmDialogModule,
     MatDialogModule,
-    NgxMaskModule
   ],
-  providers: [SnackBarService, ConfirmDialogService],
+  providers: [SnackBarService, ConfirmDialogService, provideEnvironmentNgxMask(),],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
