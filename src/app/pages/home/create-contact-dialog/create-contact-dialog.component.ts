@@ -28,8 +28,8 @@ export class CreateContactDialogComponent {
     this.contactForm = this.fb.group({
       id: this.data ? this.data.id : null,
       nome: [null, Validators.required],
-      telefone: [null, Validators.required],
-      email: [null, Validators.required],
+      telefone: [null, [Validators.required, Validators.maxLength(11), Validators.minLength(11)]],
+      email: [null, Validators.required, Validators.email],
     });
     if (this.data) {
       this.contactForm.patchValue(this.data);
