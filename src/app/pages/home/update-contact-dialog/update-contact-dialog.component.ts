@@ -29,7 +29,7 @@ export class UpdateContactDialogComponent {
       id: this.data ? this.data.id : null,
       nome: [null, Validators.required],
       telefone: [null, Validators.required],
-      email: [null, Validators.required, Validators.email],
+      email: [null, [Validators.required, Validators.email]],
     });
     if (this.data) {
       this.contactForm.patchValue(this.data);
