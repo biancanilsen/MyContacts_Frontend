@@ -19,7 +19,7 @@
             <div fxFlex="100" fxLayoutGap="16px">
               <mat-form-field fxFlex="50" appearance="outline">
                 <mat-label>Telefone</mat-label>
-                <input id="phone-create-contact-input" matInput disableRipple formControlName="telefone" placeholder="Nome" mask="(00)00000-0000" />
+                <input mask="(00)00000-0000" id="phone-create-contact-input" matInput disableRipple formControlName="telefone" placeholder="Telefone"/>
                 <mat-error *ngIf="contactForm &&
                 contactForm.controls['telefone'].hasError('required')">
                 Campo obrigatório </mat-error>
