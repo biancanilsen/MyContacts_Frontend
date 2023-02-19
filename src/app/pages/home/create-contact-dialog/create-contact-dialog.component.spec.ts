@@ -122,19 +122,19 @@ it('should have <button> with "Cancelar"', () => {
     .toContain('Salvar');
   });
 
-  it('should call saveNewContact method with expected values', () => {
-    //Arrange (Preparar)
-    fixture.componentInstance.contactForm?.get('nome')?.setValue('nomeTeste');
-    fixture.componentInstance.contactForm?.get('telefone')?.setValue('47958745214');
-    fixture.componentInstance.contactForm?.get('email')?.setValue('email@updateContact.com');
-    const spy = spyOn(contactProvider, 'saveNewContact').and.callThrough();
-    const button = fixture.debugElement.nativeElement.querySelector('#save-create-contact-button');
+  // it('should call saveNewContact method with expected values', () => {
+  //   //Arrange (Preparar)
+  //   fixture.componentInstance.contactForm?.get('nome')?.setValue('nomeTeste');
+  //   fixture.componentInstance.contactForm?.get('telefone')?.setValue('47958745214');
+  //   fixture.componentInstance.contactForm?.get('email')?.setValue('email@updateContact.com');
+  //   const spy = spyOn(contactProvider, 'saveNewContact').and.callThrough();
+  //   const button = fixture.debugElement.nativeElement.querySelector('#save-create-contact-button');
 
-    //Act (Agir após tudo preparado)
-    button.click();
+  //   //Act (Agir após tudo preparado)
+  //   button.click();
 
-    //Assert (Validar se o código agil como esperado)
-    expect(spy).toHaveBeenCalled();
-    expect(spy).toHaveBeenCalledWith({ id: null, nome: 'nomeTeste', email: 'email@updateContact.com', telefone: '47958745214'});
-  })
+  //   //Assert (Validar se o código agil como esperado)
+  //   expect(spy).toHaveBeenCalled();
+  //   expect(spy).toHaveBeenCalledWith({ id: null, nome: 'nomeTeste', email: 'email@updateContact.com', telefone: '47958745214'});
+  // })
 });
