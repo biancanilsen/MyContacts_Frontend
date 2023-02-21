@@ -24,4 +24,4 @@ jobs:
       uses: amondnet/vercel-action@v23
       with:
         vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        vercel-project-id: prj_IBHAvwalR7gerRhxsQPfbzsEbToh
