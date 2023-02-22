@@ -19,17 +19,17 @@ jobs:
     - name: Install Dependencies
       run: npm install
     - name: Set environment variables
-        env:
-          VERCEL_PROJECT_ID: "prj_IBHAvwalR7gerRhxsQPfbzsEbToh"
-        run: |
-          npx vercel -t ${{ secrets.VERCEL_TOKEN }} \
-            -m githubCommitSha=${{ github.sha }} \
-            -m githubCommitAuthorName=${{ github.actor }} \
-            -m githubCommitAuthorLogin=${{ github.actor }} \
-            -m githubDeployment=1 \
-            -m githubOrg=${{ github.repository_owner }} \
-            -m githubRepo=${{ github.repository }} \
-            -m githubCommitOrg=${{ github.repository_owner }} \
-            -m githubCommitRepo=${{ github.repository }} \
-            -m githubCommitMessage="${{ github.event.head_commit.message }}" \
-            -m githubCommitRef=${{ github.ref }}
+      env:
+        VERCEL_PROJECT_ID: "prj_IBHAvwalR7gerRhxsQPfbzsEbToh"
+      run: |
+        npx vercel -t ${{ secrets.VERCEL_TOKEN }} \
+          -m githubCommitSha=${{ github.sha }} \
+          -m githubCommitAuthorName=${{ github.actor }} \
+          -m githubCommitAuthorLogin=${{ github.actor }} \
+          -m githubDeployment=1 \
+          -m githubOrg=${{ github.repository_owner }} \
+          -m githubRepo=${{ github.repository }} \
+          -m githubCommitOrg=${{ github.repository_owner }} \
+          -m githubCommitRepo=${{ github.repository }} \
+          -m githubCommitMessage="${{ github.event.head_commit.message }}" \
+          -m githubCommitRef=${{ github.ref }}
