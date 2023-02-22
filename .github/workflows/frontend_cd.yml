@@ -26,5 +26,6 @@ jobs:
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-org-id: Ni8M5t0EECpDhhNV2BJ56fox 
           build-dir: ./dist/frontend
           prod: true
