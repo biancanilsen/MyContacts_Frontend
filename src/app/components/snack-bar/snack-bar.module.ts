@@ -6,7 +6,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { SnackBarComponent } from './snack-bar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [SnackBarComponent],
@@ -17,7 +16,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatMenuModule,
     FlexLayoutModule,
     MatButtonModule,
-    MatSnackBarModule
   ],
   entryComponents: [],
   exports: [SnackBarComponent],

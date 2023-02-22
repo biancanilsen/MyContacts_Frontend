@@ -7,6 +7,7 @@ import { CreateContactDialogComponent } from './create-contact-dialog/create-con
 import { ConfirmDialogService } from '../../../services/confirm-dialog.service';
 import { UserService } from '../../../services/user.service';
 import { environment } from 'src/environments/environment';
+import { SnackBarService } from 'src/services/snackbar.service';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -26,6 +27,7 @@ export class HomeComponent {
         private contactProvider: ContactProvider,
         private dialogService: ConfirmDialogService,
         private userService: UserService,
+        private snackbarService: SnackBarService
     ) { }
 
     ngOnInit(): void {
@@ -82,6 +84,7 @@ export class HomeComponent {
                 try {
                     await this.contactProvider.deleteContact(id);
                     this.getContactList();
+                    this.snackbarService.showAlert("Contato excluído com sucesso");
                 } catch (error) {
                     console.log('ERROR 132' + error);
                 }

@@ -20,7 +20,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MatTableModule } from '@angular/material/table';
 import {MatDialogModule } from '@angular/material/dialog';
 import { UpdateContactDialogComponent } from './pages/home/update-contact-dialog/update-contact-dialog.component';
-import { ConfirmDialogModule } from './confirm-dialog/confirm-dialog.module';
+import { ConfirmDialogModule } from './components/snack-bar/confirm-dialog/confirm-dialog.module';
 import { LoginDialogComponent } from './pages/login/login-dialog/login-dialog.component';
 import { CreateContactDialogComponent } from './pages/home/create-contact-dialog/create-contact-dialog.component';
 import { SnackBarService } from '../services/snackbar.service';

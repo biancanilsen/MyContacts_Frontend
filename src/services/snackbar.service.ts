@@ -8,7 +8,6 @@ export class SnackBarService {
 
   public showAlert(message: string, icon?: string) {
     this.snackBar.openFromComponent(SnackBarComponent, {
-      panelClass: 'success-message',
       verticalPosition: 'bottom',
       duration: 5000,
       data: {
@@ -21,7 +20,7 @@ export class SnackBarService {
   public successMessage(message: string): void {
     this.zone.run(() => {
       const snackBar = this.snackBar.open(message, 'OK', {
-        panelClass: 'success-message',
+        panelClass: ['success-message'],
         verticalPosition: 'bottom',
         duration: 5000,
       });
@@ -33,7 +32,7 @@ export class SnackBarService {
 
   public showError(message: string) {
     this.snackBar.openFromComponent(SnackBarComponent, {
-      panelClass: 'error-message',
+      panelClass: ['error-message'],
       verticalPosition: 'bottom',
       duration: 10000,
       data: {

@@ -1,7 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ContactProvider } from 'src/providers/contact.provider';
+import { ErrorService } from 'src/services/error-service';
+import { SnackBarService } from 'src/services/snackbar.service';
 
 @Component({
   selector: 'app-create-contact-dialog',
@@ -17,7 +20,10 @@ export class CreateContactDialogComponent {
     public dialogRef: MatDialogRef<CreateContactDialogComponent>,
     private contactProvider: ContactProvider,
     private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    private snackBarService: SnackBarService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private http: HttpClient, 
+    private errorService: ErrorService
   ) { }
 
   ngOnInit(): void {
@@ -47,6 +53,8 @@ export class CreateContactDialogComponent {
         await this.contactProvider.saveNewContact(data);
       } catch (error: any) {
         console.log('ERROR 132' + error);
+        this.snackBarService.showError(error)
+        return this.errorService.handleError(error);
       }
   }
 
