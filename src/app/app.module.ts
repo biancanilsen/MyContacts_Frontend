@@ -26,6 +26,8 @@ import { CreateContactDialogComponent } from './pages/home/create-contact-dialog
 import { SnackBarService } from '../services/snackbar.service';
 import { ConfirmDialogService } from '../services/confirm-dialog.service';
 import { provideEnvironmentNgxMask } from 'ngx-mask';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { provideEnvironmentNgxMask } from 'ngx-mask';
     MatTableModule,
     ConfirmDialogModule,
     MatDialogModule,
+    MatToolbarModule,
+    MatChipsModule
   ],
   providers: [SnackBarService, ConfirmDialogService, provideEnvironmentNgxMask(),],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
