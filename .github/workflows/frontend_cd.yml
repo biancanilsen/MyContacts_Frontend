@@ -18,11 +18,18 @@ jobs:
         node-version: '16.x'
     - name: Install Dependencies
       run: npm install
-    - name: Build Angular App
-      run: npm run build
-    - name: Deploy to Vercel
-      uses: amondnet/vercel-action@v20
-      with:
-        vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-        vercel-org-id: user 
+    - name: Set environment variables
+        env:
+          VERCEL_PROJECT_ID: "prj_IBHAvwalR7gerRhxsQPfbzsEbToh"
+        run: |
+          npx vercel -t ${{ secrets.VERCEL_TOKEN }} \
+            -m githubCommitSha=${{ github.sha }} \
+            -m githubCommitAuthorName=${{ github.actor }} \
+            -m githubCommitAuthorLogin=${{ github.actor }} \
+            -m githubDeployment=1 \
+            -m githubOrg=${{ github.repository_owner }} \
+            -m githubRepo=${{ github.repository }} \
+            -m githubCommitOrg=${{ github.repository_owner }} \
+            -m githubCommitRepo=${{ github.repository }} \
+            -m githubCommitMessage="${{ github.event.head_commit.message }}" \
+            -m githubCommitRef=${{ github.ref }}
