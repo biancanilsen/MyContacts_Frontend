@@ -5,15 +5,17 @@
     margin-top: 20px;
   }
 
-  .logout-button{
-    background-color: #0261A6;
-    margin-left: 96.5% !important;
+  mat-chip{
+    background-color: rgb(187, 186, 186);
+    color: white !important;
+    margin-left: 42%;
+    margin-top: 17%;
   }
 
   .table-contacts {
     margin-top: 2%;
     height: 100%;
-    max-height: 790px !important;
+    max-height: 730px !important;
     overflow: auto;
     width: 100%;
     border-radius: 20px;
@@ -33,7 +35,7 @@
     }
 
     .mat-tab-label-active {
-      border-bottom: 2px solid #0261A6;
+      border-bottom: 2px solid #1F7CCC;
       opacity: 1 !important;
     }
 
@@ -44,8 +46,8 @@
     table th {
       overflow: hidden;
       color: white;
-      border: 1px solid #0261A6;
-      background: #0261A6;
+      border: 1px solid #1F7CCC;
+      background: #1F7CCC;
     }
 
     table td {

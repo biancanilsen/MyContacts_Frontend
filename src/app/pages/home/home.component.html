@@ -1,9 +1,11 @@
+<mat-toolbar style="background-color:#0261A6; color: white">
+  <img src="../../../assets/logo-mycontacts.png" alt="logo" class="logo-home" />
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon" (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
 <div id="contactList" class="page">
-  <div class="logout-button-container">
-    <button id="logout-button" mat-fab class="logout-button" (click)="logout()">
-      <mat-icon>logout</mat-icon>
-    </button>
-  </div>
   <div class="table-contacts mat-elevation-z8" fxLayout="column">
     <table id="home-table" mat-table [dataSource]="dataContact" class="mat-elevation-z8">
       <ng-container matColumnDef="nome">
@@ -22,8 +24,8 @@
       </ng-container>
 
       <ng-container matColumnDef="icon">
-        <th mat-header-cell *matHeaderCellDef  style="text-align: end">
-          <button id="add-button" class="add-button" mat-icon-button (click)="openDialog()"  >
+        <th mat-header-cell *matHeaderCellDef style="text-align: end">
+          <button id="add-button" class="add-button" mat-icon-button (click)="openDialog()">
             <mat-icon>add</mat-icon>
           </button>
         </th>
@@ -39,5 +41,11 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    <mat-chip-set *ngIf="dataContact.length === 0" class="chip-table-empty" >
+      <mat-chip class="box-table-empty">
+        Ops, nenhum contato cadastrado
+      </mat-chip>
+    </mat-chip-set>
   </div>
 </div>

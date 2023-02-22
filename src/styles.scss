@@ -102,3 +102,15 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.logo-home {
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 100%;
+    max-width: 170px;
+    max-height: 150px;
+}
