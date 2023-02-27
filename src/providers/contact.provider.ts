@@ -1,53 +1,33 @@
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiGateway } from 'src/api-gateway';
-import { environment } from 'src/environments/environment';
+import { ApiClient } from 'src/apiClient';
+import { ApiContactResponse, ApiContactsResponse, ApideletedContact, ApiResponse } from 'src/utils/api-response';
+import { ApiTokenResponse } from 'src/utils/api-response';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ContactProvider {
-  constructor(private apiGateway: ApiGateway, private http: HttpClient) { }
+  constructor(private apiClient: ApiClient) { }
 
   ngOnInit(): void { }
 
-  listContactsByUserId(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.apiGateway
-        .get('contacts/list-contacts')
-        .subscribe((response: HttpResponse<any>) => {
-          resolve(response.body.apiResponse);
-        }, reject);
-    });
+
+  async listContactsByUserId(): Promise<ApiContactsResponse> {
+    let result = await this.apiClient.get('contacts/list-contacts');
+    return result
   }
 
-  saveNewContact(contact: any): Promise<any> {
-    return new Promise((resolve, reject) => {
-        this.apiGateway
-            .post('contacts/register', contact)
-            .subscribe((response: HttpResponse<any>) => {
-                resolve(response.body);
-            }, reject);
-    });
-}
-
-  updateContact(contact: any): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.apiGateway
-        .put('contacts/update', contact)
-        .subscribe((response: HttpResponse<any>) => {
-          resolve(response.body);
-        }, reject);
-    });
+  async saveNewContact(contact: any): Promise<ApiContactsResponse> {
+    return await this.apiClient.post('contacts/register', contact);
   }
 
-  deleteContact(id: string | null): Promise<any> {
-    return new Promise((resolve, reject) => {
-        this.apiGateway
-            .delete('contacts/:id', { id: id })
-            .subscribe((response: HttpResponse<any>) => {
-                resolve(response.body);
-            }, reject);
-    });
-}
+  async updateContact(contact: any): Promise<ApiContactResponse> {
+    return await this.apiClient.put('contacts/update', contact);
+  }
+
+  async deleteContact(id: string): Promise<ApideletedContact> {
+    const response = await this.apiClient.delete(`contacts`, { id: id });
+    return response.data;
+   
+  }
 }

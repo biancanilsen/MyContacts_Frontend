@@ -8,6 +8,8 @@ import { ConfirmDialogService } from '../../../services/confirm-dialog.service';
 import { UserService } from '../../../services/user.service';
 import { environment } from 'src/environments/environment';
 import { SnackBarService } from 'src/services/snackbar.service';
+import { ApiContactResponse } from 'src/utils/api-response';
+import { Contact } from 'src/utils/api-response';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -17,10 +19,10 @@ import { SnackBarService } from 'src/services/snackbar.service';
 export class HomeComponent {
     @Output() onChange: EventEmitter<any> = new EventEmitter();
     @ViewChild('contactTable') contactTable!: MatTable<any>;
-    dataContact: [] = [];
+    dataContact: Contact[] = [];
     displayedColumns: string[] = ['nome', 'telefone', 'email', 'icon'];
     contact: any;
-    token!: string;
+    hasToken: boolean = false;
 
     constructor(
         public dialog: MatDialog,
@@ -31,15 +33,16 @@ export class HomeComponent {
     ) { }
 
     ngOnInit(): void {
-        this.token = localStorage.getItem('token')!;
-        if (!this.token) {
+        this.hasToken = localStorage.getItem('token') != null;
+        if (!this.hasToken) {
             location.replace(environment.loginRoute);
         }
         this.getContactList();
     }
 
     async getContactList() {
-        this.dataContact = await this.contactProvider.listContactsByUserId();
+        let response = await this.contactProvider.listContactsByUserId();
+        this.dataContact = response.apiResponse;
     }
 
     getContacts(contactSelected: any) {
@@ -48,10 +51,9 @@ export class HomeComponent {
             height: '400px',
             data: contactSelected,
         });
-        dialogRef.afterClosed().subscribe(contact => {
-            if (contact) {
-                this.getContactList();
-            }
+
+        dialogRef.componentInstance.onChange.subscribe(() => {
+            this.getContactList();
         });
     }
 
@@ -65,6 +67,10 @@ export class HomeComponent {
             if (dependent) {
                 this.getContactList();
             }
+        });
+
+        dialogRef.componentInstance.onChange.subscribe(() => {
+            this.getContactList();
         });
     }
 
@@ -86,7 +92,7 @@ export class HomeComponent {
                     this.getContactList();
                     this.snackbarService.showAlert("Contato excluído com sucesso");
                 } catch (error) {
-                    console.log('ERROR 132' + error);
+                    this.snackbarService.showAlert("Ocorreu um erro ao excluir esse contato");
                 }
             }
         });

@@ -20,7 +20,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { MatTableModule } from '@angular/material/table';
 import {MatDialogModule } from '@angular/material/dialog';
 import { UpdateContactDialogComponent } from './pages/home/update-contact-dialog/update-contact-dialog.component';
-import { ConfirmDialogModule } from './components/snack-bar/confirm-dialog/confirm-dialog.module';
 import { LoginDialogComponent } from './pages/login/login-dialog/login-dialog.component';
 import { CreateContactDialogComponent } from './pages/home/create-contact-dialog/create-contact-dialog.component';
 import { SnackBarService } from '../services/snackbar.service';
@@ -28,6 +27,9 @@ import { ConfirmDialogService } from '../services/confirm-dialog.service';
 import { provideEnvironmentNgxMask } from 'ngx-mask';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatChipsModule} from '@angular/material/chips';
+import { ConfirmDialogModule } from './components/snack-bar/confirm-dialog/confirm-dialog.module';
+import { ErrorMessageComponent } from './components/error-message/error-message.component';
+import { ApiClient } from 'src/apiClient';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import {MatChipsModule} from '@angular/material/chips';
     SnackBarComponent,
     UpdateContactDialogComponent,
     LoginDialogComponent,
-    CreateContactDialogComponent 
+    CreateContactDialogComponent,
+    ErrorMessageComponent 
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,7 @@ import {MatChipsModule} from '@angular/material/chips';
     MatToolbarModule,
     MatChipsModule
   ],
-  providers: [SnackBarService, ConfirmDialogService, provideEnvironmentNgxMask(),],
+  providers: [SnackBarService, ConfirmDialogService, ApiClient, provideEnvironmentNgxMask(),],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })

@@ -1,61 +1,71 @@
 <div id="createContactDialog" class="dialog">
-    <div class="content-scroll" *ngIf="contactForm">
-      <div class="content-header" fxLayout="row">
-        <h2 class="title-content" mat-dialog-title>Criar novo contato</h2>
-        <button id="close-create-contact-button" mat-icon-button class="mat-icon-content" (click)="close()">
-          <mat-icon>cancel</mat-icon>
-        </button>
-      </div>
-      <div class="dialog-content">
-        <mat-dialog-content class="mat-typography">
-          <form [formGroup]="contactForm" fxLayout="column">
-            <div fxFlex="100" fxLayoutGap="16px">
-                <mat-form-field fxFlex="100" appearance="outline">
-                    <mat-label>Nome</mat-label>
-                    <input id="name-create-contact-input" matInput disableRipple formControlName="nome" placeholder="Nome" />
-                  </mat-form-field>
-            </div>
-  
-            <div fxFlex="100" fxLayoutGap="16px">
-              <mat-form-field fxFlex="50" appearance="outline">
-                <mat-label>Telefone</mat-label>
-                <input mask="(00)00000-0000" id="phone-create-contact-input" matInput disableRipple formControlName="telefone" placeholder="Telefone"/>
-                <mat-error *ngIf="contactForm &&
+  <div class="content-scroll" *ngIf="contactForm">
+    <div class="content-header" fxLayout="row">
+      <h2 class="title-content" mat-dialog-title>Criar novo contato</h2>
+      <button id="close-create-contact-button" mat-icon-button class="mat-icon-content" (click)="close()">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </div>
+    <div class="dialog-content">
+      <mat-dialog-content class="mat-typography">
+        <form [formGroup]="contactForm" fxLayout="column">
+          <div fxFlex="100" fxLayoutGap="16px">
+            <mat-form-field fxFlex="100" appearance="outline">
+              <mat-label>Nome</mat-label>
+              <input id="name-create-contact-input" matInput disableRipple formControlName="nome" placeholder="Nome" />
+              <mat-error *ngIf="contactForm &&
+                contactForm.controls['nome'].hasError('required')">
+                Campo obrigatório </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="100" fxLayoutGap="16px">
+
+
+            <mat-form-field fxFlex="50" appearance="outline">
+              <mat-label>Telefone</mat-label>
+              <input matInput formControlName="telefone"type="text" id="phone-create-contact-input"
+                placeholder="Telefone" />
+              <mat-error *ngIf="contactForm &&
                 contactForm.controls['telefone'].hasError('required')">
                 Campo obrigatório </mat-error>
-                <mat-error *ngIf="contactForm &&
+              <mat-error *ngIf="contactForm &&
                 contactForm.controls['telefone'].hasError('maxLength')">
                 Máximo 11 caracteres </mat-error>
-                <mat-error *ngIf="contactForm &&
+              <mat-error *ngIf="contactForm &&
                 contactForm.controls['telefone'].hasError('minLength')">
                 Mínimo 11 caracteres </mat-error>
-              </mat-form-field>
-  
-              <mat-form-field fxFlex="50" appearance="outline">
-                <mat-label>Email</mat-label>
-                <input id="email-create-contact-input" matInput disableRipple formControlName="email" placeholder="Email" />
-                <mat-error *ngIf="contactForm &&
+            </mat-form-field>
+
+
+
+
+            <mat-form-field fxFlex="50" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input id="email-create-contact-input" matInput disableRipple formControlName="email"
+                placeholder="Email" />
+              <mat-error *ngIf="contactForm &&
                 contactForm.controls['email'].hasError('required')">
                 Campo obrigatório </mat-error>
-                <mat-error *ngIf="contactForm &&
+              <mat-error *ngIf="contactForm &&
                 contactForm.controls['email'].hasError('email')">
                 Email inválido </mat-error>
-              </mat-form-field>
-            </div>
-        </form>
-        </mat-dialog-content>
-        <mat-dialog-actions>
-          <div class="button-dialog">
-            <button id="cancel-create-contact-button" mat-flat-button mat-dialog-close (click)="closeDialog()">
-              Cancelar
-            </button>
-            <button id="save-create-contact-button" mat-flat-button [mat-dialog-close]="true" color="primary"
-              (click)="save()">
-              Salvar
-            </button>
+            </mat-form-field>
           </div>
-        </mat-dialog-actions>
-      </div>
+        </form>
+      </mat-dialog-content>
+      <app-error-message [errorListFromRequest]="errors"></app-error-message>
+      <mat-dialog-actions>
+        <div class="button-dialog">
+          <button id="cancel-create-contact-button" mat-flat-button mat-dialog-close (click)="closeDialog()">
+            Cancelar
+          </button>
+          <button id="save-create-contact-button" mat-flat-button color="primary"
+            (click)="save()">
+            Salvar
+          </button>
+        </div>
+      </mat-dialog-actions>
     </div>
+  </div>
 </div>
- 

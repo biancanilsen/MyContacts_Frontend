@@ -38,14 +38,15 @@
             </div>
         </form>
         </mat-dialog-content>
+        <app-error-message [errorListFromRequest]="errors"></app-error-message>
         <mat-dialog-actions>
           <div class="button-dialog">
             <button id="cancel-update-contact-button" mat-flat-button mat-dialog-close (click)="closeDialog()">
               Cancelar
             </button>
-            <button id="save-update-contact-button" mat-flat-button [mat-dialog-close]="true" color="primary"
+            <button id="save-update-contact-button" mat-flat-button color="primary"
               (click)="save()">
-              Salvar
+              Editar
             </button>
           </div>
         </mat-dialog-actions>

@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ContactProvider } from 'src/providers/contact.provider';
+import { ErrorItem } from 'src/utils/api-response';
+import { ContactProvider } from '../../../../providers/contact.provider'
+import { SnackBarService } from '../../../../services/snackbar.service';
 
 @Component({
   selector: 'update-contact-dialog',
@@ -12,13 +14,20 @@ export class UpdateContactDialogComponent {
   @Output() onChange: EventEmitter<any> = new EventEmitter();
   contactForm!: FormGroup;
   method!: string | null;
+  errorItem: ErrorItem = {
+    message: ""
+  };
+  errors: ErrorItem[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<UpdateContactDialogComponent>,
     private contactProvider: ContactProvider,
     private fb: FormBuilder,
+    private snackbarService: SnackBarService,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+  ) {
+    this.errors.push(this.errorItem);
+    }
 
   ngOnInit(): void {
     this.initForm();
@@ -44,8 +53,13 @@ export class UpdateContactDialogComponent {
     const data = this.contactForm.getRawValue();
     try {
       await this.contactProvider.updateContact(data);
+      this.onChange.emit();
+      this.snackbarService.successMessage("Contato alterado com sucesso")
+      this.dialogRef.close();
     } catch (error: any) {
-      console.log(error);
+      if (error?.response?.data?.errors) {
+        this.errors = error.response.data.errors;
+      }
     }
   }
 
