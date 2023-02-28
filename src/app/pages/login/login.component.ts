@@ -7,6 +7,7 @@ import { SnackBarService } from 'src/services/snackbar.service';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorItem } from 'src/utils/api-response';
+import { User } from 'src/models/userModel';
 
 @Component({
   selector: 'app-login',
@@ -83,11 +84,12 @@ export class LoginComponent implements OnInit{
     }
   }
 
-  openDialogCreateUser(userSelected: any){
-        this.dialog.open(LoginDialogComponent, {
-            width: '400px',
-            height: '380px',
-            data: userSelected,
-        });
+  openDialogCreateUser(userSelected: User) {
+    this.dialog.open(LoginDialogComponent, {
+      width: '400px',
+      height: '380px',
+      data: userSelected,
+    });
   }
+  
 }

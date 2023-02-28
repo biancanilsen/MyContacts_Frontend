@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MyChangeEvent } from 'src/models/eventModel';
+import { User } from 'src/models/userModel';
 import { UsersProvider } from 'src/providers/user.provider';
 import { SnackBarService } from 'src/services/snackbar.service';
 import { ErrorItem } from 'src/utils/api-response';
@@ -10,7 +12,7 @@ import { ErrorItem } from 'src/utils/api-response';
   styleUrls: ['./login-dialog.component.scss']
 })
 export class LoginDialogComponent {
-  @Output() onChange: EventEmitter<any> = new EventEmitter();
+  @Output() onChange: EventEmitter<MyChangeEvent> = new EventEmitter();
   userForm!: FormGroup;
   errorItem: ErrorItem = {
     message: ""
@@ -22,7 +24,7 @@ export class LoginDialogComponent {
     private userProvider: UsersProvider,
     private fb: FormBuilder,
     private snackbarService: SnackBarService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: User 
   ) {
     this.errors.push(this.errorItem);
   }
@@ -47,6 +49,7 @@ export class LoginDialogComponent {
     try {
       let result = await this.userProvider.saveNewUser(data);
       this.onChange.emit();
+      this.dialogRef.close();
       this.snackbarService.successMessage("Usuário criado com sucesso");
     } catch (error: any) {
       if (error?.response?.data?.errors) {

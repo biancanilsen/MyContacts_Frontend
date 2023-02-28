@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiClient } from 'src/apiClient';
-import { ApiContactResponse, ApiContactsResponse, ApideletedContact, ApiResponse } from 'src/utils/api-response';
+import { Contact } from 'src/models/contactModel';
+import { ApiContactResponse, ApiContactsResponse, ApiDeletedContact, ApiResponse } from 'src/utils/api-response';
 import { ApiTokenResponse } from 'src/utils/api-response';
 
 @Injectable({
@@ -17,15 +18,15 @@ export class ContactProvider {
     return result
   }
 
-  async saveNewContact(contact: any): Promise<ApiContactsResponse> {
+  async saveNewContact(contact: Contact): Promise<ApiContactsResponse> {
     return await this.apiClient.post('contacts/register', contact);
   }
 
-  async updateContact(contact: any): Promise<ApiContactResponse> {
+  async updateContact(contact: Contact): Promise<ApiContactResponse> {
     return await this.apiClient.put('contacts/update', contact);
   }
 
-  async deleteContact(id: string): Promise<ApideletedContact> {
+  async deleteContact(id: string): Promise<ApiDeletedContact> {
     const response = await this.apiClient.delete(`contacts`, { id: id });
     return response.data;
    

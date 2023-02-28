@@ -1,6 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiClient } from 'src/apiClient';
+import { User } from 'src/models/userModel';
 import { ApiResponse } from 'src/utils/api-response';
 
 const apiVersion = 'api/v1';
@@ -13,17 +14,7 @@ export class UsersProvider {
 
   ngOnInit(): void { }
 
-  saveNewUser(contact: any): Promise<ApiResponse<null>> {
-    return new Promise((resolve, reject) => {
-      this.apiClient
-        .post('user/register', contact)
-        .then((response) => {
-        ;
-        })
-        .catch((error) => {
-          reject(error);
-        });
-
-    });
+  async saveNewUser(user: User): Promise<ApiResponse> {
+    return await this.apiClient.post('user/register', user);
   }
 }

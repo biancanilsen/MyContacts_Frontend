@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ContactData } from 'src/models/contactDialogModel';
+import { MyChangeEvent } from 'src/models/eventModel';
 import { ContactProvider } from 'src/providers/contact.provider';
 import { SnackBarService } from 'src/services/snackbar.service';
 import { ErrorItem } from 'src/utils/api-response';
@@ -12,7 +14,7 @@ import { ErrorItem } from 'src/utils/api-response';
   styleUrls: ['./create-contact-dialog.component.scss']
 })
 export class CreateContactDialogComponent {
-  @Output() onChange: EventEmitter<any> = new EventEmitter();
+  @Output() onChange: EventEmitter<MyChangeEvent> = new EventEmitter();
   contactForm!: FormGroup;
   errorItem: ErrorItem = {
     message: ""
@@ -24,7 +26,7 @@ export class CreateContactDialogComponent {
     private contactProvider: ContactProvider,
     private fb: FormBuilder,
     private snackbarService: SnackBarService,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: ContactData,
     private http: HttpClient,
   ) {
     this.errors.push(this.errorItem);
@@ -77,7 +79,4 @@ export class CreateContactDialogComponent {
     this.dialogRef.close();
     sessionStorage.clear;
   }
-
 }
-
-

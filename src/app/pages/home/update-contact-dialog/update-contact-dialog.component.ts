@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ContactData } from 'src/models/contactDialogModel';
+import { MyChangeEvent } from 'src/models/eventModel';
 import { ErrorItem } from 'src/utils/api-response';
 import { ContactProvider } from '../../../../providers/contact.provider'
 import { SnackBarService } from '../../../../services/snackbar.service';
@@ -11,7 +13,7 @@ import { SnackBarService } from '../../../../services/snackbar.service';
   styleUrls: ['./update-contact-dialog.component.scss']
 })
 export class UpdateContactDialogComponent {
-  @Output() onChange: EventEmitter<any> = new EventEmitter();
+  @Output() onChange: EventEmitter<MyChangeEvent> = new EventEmitter();
   contactForm!: FormGroup;
   method!: string | null;
   errorItem: ErrorItem = {
@@ -24,7 +26,7 @@ export class UpdateContactDialogComponent {
     private contactProvider: ContactProvider,
     private fb: FormBuilder,
     private snackbarService: SnackBarService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: ContactData
   ) {
     this.errors.push(this.errorItem);
     }

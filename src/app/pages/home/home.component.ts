@@ -9,7 +9,9 @@ import { UserService } from '../../../services/user.service';
 import { environment } from 'src/environments/environment';
 import { SnackBarService } from 'src/services/snackbar.service';
 import { ApiContactResponse } from 'src/utils/api-response';
-import { Contact } from 'src/utils/api-response';
+import { Contact } from '../../../models/contactModel'
+import { MyChangeEvent } from 'src/models/eventModel';
+import { ContactTableModel } from 'src/models/contactTableModel';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -17,11 +19,10 @@ import { Contact } from 'src/utils/api-response';
     encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent {
-    @Output() onChange: EventEmitter<any> = new EventEmitter();
-    @ViewChild('contactTable') contactTable!: MatTable<any>;
+    @Output() onChange: EventEmitter<MyChangeEvent> = new EventEmitter();
+    @ViewChild('contactTable') contactTable!: MatTable<ContactTableModel>;
     dataContact: Contact[] = [];
     displayedColumns: string[] = ['nome', 'telefone', 'email', 'icon'];
-    contact: any;
     hasToken: boolean = false;
 
     constructor(

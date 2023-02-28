@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Message } from 'src/models/messageModel';
 import { ErrorItem } from 'src/utils/api-response';
 
 @Component({
@@ -15,8 +16,7 @@ export class ErrorMessageComponent {
     return this.errorListFromRequest.length > 0;
   }
 
-  trackByFn(index: number, item: any) {
-    return item.message;
+  trackByFn(index: number, error: ErrorItem): string {
+    return error.message;
   }
-  
 }
