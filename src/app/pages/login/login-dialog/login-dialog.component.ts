@@ -47,14 +47,16 @@ export class LoginDialogComponent {
   async save() {
     const data = this.userForm.getRawValue();
     try {
-      let result = await this.userProvider.saveNewUser(data);
-      this.onChange.emit();
-      this.dialogRef.close();
-      this.snackbarService.successMessage("Usuário criado com sucesso");
-    } catch (error: any) {
-      if (error?.response?.data?.errors) {
-        this.errors = error.response.data.errors;
+      const response = await this.userProvider.saveNewUser(data);
+      if (response.errors && response.errors.length > 0) {
+        this.errors = response.errors;
+      } else {
+        this.onChange.emit();
+        this.snackbarService.successMessage("Usuário criado com sucesso");
+        this.dialogRef.close();
       }
+    } catch {
+      this.errors = [{ message: "Ocorreu um erro ao criar seu usuário. Tente novamente." }];
     }
   }
 

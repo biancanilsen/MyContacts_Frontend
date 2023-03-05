@@ -54,14 +54,16 @@ export class UpdateContactDialogComponent {
   async save() {
     const data = this.contactForm.getRawValue();
     try {
-      await this.contactProvider.updateContact(data);
-      this.onChange.emit();
-      this.snackbarService.successMessage("Contato alterado com sucesso")
-      this.dialogRef.close();
-    } catch (error: any) {
-      if (error?.response?.data?.errors) {
-        this.errors = error.response.data.errors;
+      const response = await this.contactProvider.updateContact(data);
+      if (response.errors && response.errors.length > 0) {
+        this.errors = response.errors;
+      } else {
+        this.onChange.emit();
+        this.snackbarService.successMessage("Contato alterado com sucesso");
+        this.dialogRef.close();
       }
+    } catch {
+      this.errors = [{ message: "Ocorreu um erro ao editar seu contato. Tente novamente." }];
     }
   }
 

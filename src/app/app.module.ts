@@ -25,8 +25,8 @@ import { CreateContactDialogComponent } from './pages/home/create-contact-dialog
 import { SnackBarService } from '../services/snackbar.service';
 import { ConfirmDialogService } from '../services/confirm-dialog.service';
 import { provideEnvironmentNgxMask } from 'ngx-mask';
-import { MatToolbarModule} from '@angular/material/toolbar';
-import { MatChipsModule} from '@angular/material/chips';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatChipsModule } from '@angular/material/chips';
 import { ConfirmDialogModule } from './components/snack-bar/confirm-dialog/confirm-dialog.module';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { ApiClient } from 'src/apiClient';
