@@ -1,3 +1,13 @@
+#toolbar {
+  .logo {
+    margin-top: 2px;
+    margin-left: 2%;
+    width: 100%;
+    max-width: 220px;
+    max-height: 150px;
+}
+}
+
 #contactList {
   padding-bottom: 10px;
 
@@ -5,7 +15,7 @@
     margin-top: 20px;
   }
 
-  mat-chip{
+  mat-chip {
     background-color: rgb(187, 186, 186);
     color: white !important;
     margin-left: 42%;
