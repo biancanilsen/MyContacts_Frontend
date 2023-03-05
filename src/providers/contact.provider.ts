@@ -14,8 +14,7 @@ export class ContactProvider {
 
 
   async listContactsByUserId(): Promise<ApiContactsResponse> {
-    let result = await this.apiClient.get('contacts/list-contacts');
-    return result
+    return await this.apiClient.get('contacts/list-contacts');
   }
 
   async saveNewContact(contact: Contact): Promise<ApiContactsResponse> {
@@ -27,8 +26,6 @@ export class ContactProvider {
   }
 
   async deleteContact(id: string): Promise<ApiDeletedContact> {
-    const response = await this.apiClient.delete(`contacts`, { id: id });
-    return response.data;
-   
+    return await this.apiClient.delete('contacts', { id: id });
   }
 }
