@@ -29,12 +29,6 @@
               <mat-error *ngIf="contactForm &&
                 contactForm.controls['telefone'].hasError('required')">
                 Campo obrigatório </mat-error>
-              <mat-error *ngIf="contactForm &&
-                contactForm.controls['telefone'].hasError('maxLength')">
-                Máximo 11 caracteres </mat-error>
-              <mat-error *ngIf="contactForm &&
-                contactForm.controls['telefone'].hasError('minLength')">
-                Mínimo 11 caracteres </mat-error>
             </mat-form-field>
             <mat-form-field fxFlex="50" appearance="outline">
               <mat-label>Email</mat-label>
@@ -44,9 +38,6 @@
               <mat-error *ngIf="contactForm &&
                 contactForm.controls['email'].hasError('required')">
                 Campo obrigatório </mat-error>
-              <mat-error *ngIf="contactForm &&
-                contactForm.controls['email'].hasError('email')">
-                Email inválido </mat-error>
             </mat-form-field>
           </div>
         </form>
