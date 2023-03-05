@@ -1,7 +1,11 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ContactProvider } from 'src/providers/contact.provider';
+import { ContactData } from 'src/models/contactDialogModel';
+import { MyChangeEvent } from 'src/models/eventModel';
+import { ErrorItem } from 'src/utils/api-response';
+import { ContactProvider } from '../../../../providers/contact.provider'
+import { SnackBarService } from '../../../../services/snackbar.service';
 
 @Component({
   selector: 'update-contact-dialog',
@@ -9,16 +13,23 @@ import { ContactProvider } from 'src/providers/contact.provider';
   styleUrls: ['./update-contact-dialog.component.scss']
 })
 export class UpdateContactDialogComponent {
-  @Output() onChange: EventEmitter<any> = new EventEmitter();
+  @Output() onChange: EventEmitter<MyChangeEvent> = new EventEmitter();
   contactForm!: FormGroup;
   method!: string | null;
+  errorItem: ErrorItem = {
+    message: ""
+  };
+  errors: ErrorItem[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<UpdateContactDialogComponent>,
     private contactProvider: ContactProvider,
     private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+    private snackbarService: SnackBarService,
+    @Inject(MAT_DIALOG_DATA) public data: ContactData
+  ) {
+    this.errors.push(this.errorItem);
+    }
 
   ngOnInit(): void {
     this.initForm();
@@ -44,8 +55,13 @@ export class UpdateContactDialogComponent {
     const data = this.contactForm.getRawValue();
     try {
       await this.contactProvider.updateContact(data);
+      this.onChange.emit();
+      this.snackbarService.successMessage("Contato alterado com sucesso")
+      this.dialogRef.close();
     } catch (error: any) {
-      console.log(error);
+      if (error?.response?.data?.errors) {
+        this.errors = error.response.data.errors;
+      }
     }
   }
 

@@ -7,7 +7,7 @@ import {
 @Component({
   selector: 'snack-bar-component',
   templateUrl: 'snack-bar.component.html',
-  styleUrls: ['snack-bar.component.scss']
+  styles: [],
 })
 export class SnackBarComponent {
   constructor(

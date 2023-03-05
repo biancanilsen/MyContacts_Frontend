@@ -1,0 +1,3 @@
+  <div fxLayoutAlign="center center" class="error-message-container" *ngIf="hasErrors">
+    <span *ngFor="let error of errorListFromRequest; trackBy: trackByFn"  style="background-color: red; border-radius: 5px; border-color: aliceblue; border-style: groove;">{{ error.message }}</span>
+  </div>

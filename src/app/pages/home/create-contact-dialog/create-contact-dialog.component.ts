@@ -1,7 +1,12 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ContactData } from 'src/models/contactDialogModel';
+import { MyChangeEvent } from 'src/models/eventModel';
 import { ContactProvider } from 'src/providers/contact.provider';
+import { SnackBarService } from 'src/services/snackbar.service';
+import { ErrorItem } from 'src/utils/api-response';
 
 @Component({
   selector: 'app-create-contact-dialog',
@@ -9,16 +14,23 @@ import { ContactProvider } from 'src/providers/contact.provider';
   styleUrls: ['./create-contact-dialog.component.scss']
 })
 export class CreateContactDialogComponent {
-  @Output() onChange: EventEmitter<any> = new EventEmitter();
+  @Output() onChange: EventEmitter<MyChangeEvent> = new EventEmitter();
   contactForm!: FormGroup;
-  method!: string | null;
+  errorItem: ErrorItem = {
+    message: ""
+  };
+  errors: ErrorItem[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<CreateContactDialogComponent>,
     private contactProvider: ContactProvider,
     private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+    private snackbarService: SnackBarService,
+    @Inject(MAT_DIALOG_DATA) public data: ContactData,
+    private http: HttpClient,
+  ) {
+    this.errors.push(this.errorItem);
+    }
 
   ngOnInit(): void {
     this.initForm();
@@ -28,7 +40,15 @@ export class CreateContactDialogComponent {
     this.contactForm = this.fb.group({
       id: this.data ? this.data.id : null,
       nome: [null, Validators.required],
-      telefone: [null, [Validators.required, Validators.maxLength(11), Validators.minLength(11)]],
+      telefone: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(11),
+          Validators.minLength(11),
+        ],
+      ],
+
       email: [null, Validators.required, Validators.email],
     });
     if (this.data) {
@@ -43,11 +63,16 @@ export class CreateContactDialogComponent {
 
   async save() {
     const data = this.contactForm.getRawValue();
-      try {
-        await this.contactProvider.saveNewContact(data);
-      } catch (error: any) {
-        console.log('ERROR 132' + error);
+    try {
+      await this.contactProvider.saveNewContact(data);
+      this.onChange.emit();
+      this.snackbarService.successMessage("Contato criado com sucesso");
+      this.dialogRef.close();
+    } catch (error: any) {
+      if (error?.response?.data?.errors) {
+        this.errors = error.response.data.errors;
       }
+    }
   }
 
   close() {
@@ -55,4 +80,3 @@ export class CreateContactDialogComponent {
     sessionStorage.clear;
   }
 }
-
