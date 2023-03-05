@@ -1,5 +1,6 @@
 @import url("../src/app/layout/scss/util.scss");
 @import url("../src/app/layout/scss/frame.scss");
+@import '~@fortawesome/fontawesome-free/css/all.css';
 
 html,
 body {
@@ -42,8 +43,6 @@ html {
     & .mat-checkbox-background,
     .mat-checkbox-frame {
         border-radius: 70% !important;
-        // width: 20px;
-        // height: 20px;
     }
 }
 
@@ -113,4 +112,21 @@ body {
     width: 100%;
     max-width: 170px;
     max-height: 150px;
+}
+
+::ng-deep.success-message {
+    color: black !important;
+    width: 400px;
+    background-color: #4CDB72 !important;
+    .mat-simple-snackbar-action {
+        color: black !important;
+    }
+}
+::ng-deep.error-message {
+    color: #ffffffde !important;
+    width: 400px;
+    background-color: #E30F0F !important;
+    .mat-simple-snackbar-action {
+        color: #ffffffde !important;
+    }
 }

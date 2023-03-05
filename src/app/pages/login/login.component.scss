@@ -10,18 +10,20 @@
 
     .login-text {
         margin-top: 30px;
-        font-size: 19.7px;
+        font-size: 18px;
         margin-bottom: 30px;
-        color: #ffff   !important;
+        color: #ffff !important;
     }
 
     .login-wrapper {
         margin-left: 10%;
         margin-top: 7%;
+        width: 100%;
+        max-width: 420px;
 
         h2 {
             color: #ffff !important;
-            font-size: 62px;
+            font-size: 30px;
             font-weight: bold;
         }
 
@@ -39,31 +41,35 @@
         margin-top: 75px;
         margin-left: 10.5%;
         width: 100%;
-        max-width: 180px;
+        max-width: 220px;
         max-height: 150px;
+    }
+
+    input{
+        color: white !important;
     }
 
     .w-100 {
         background-color: #46AFF5;
         text-align: center;
         color: white;
+        position: absolute;
         width: 100%;
-        max-width: 400px;
-        margin-left: 15%;
+        max-width: 400px !important;
         border-radius: 13px;
         height: 48px;
         border: 1px solid #46AFF5;
-        margin: 0%;
-      }
+        margin-top: 250px;
+    }
 
-      .create-user {
+    .create-user {
         background-color: transparent;
         color: white;
         width: 100%;
         max-width: 401px;
         height: 48px;
         margin: 0%;
-      }
+    }
 
     mat-form-field {
         color: #ffff !important;
@@ -105,13 +111,13 @@
     ::placeholder {
         color: #fff !important;
     }
-    
+
     @media screen and (max-width: 1265px) {
         background-image: none;
 
     }
 
-    .create-user{
+    .create-user {
         color: #ffff;
         margin-top: 0px !important;
         padding-bottom: 20px;

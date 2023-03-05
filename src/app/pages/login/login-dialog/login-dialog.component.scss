@@ -1,60 +1,61 @@
-#LoginDialog{
-    mat-dialog-content  {
+#LoginDialog {
+    mat-dialog-content {
         overflow: hidden !important;
-        padding-left: 30px !important;
-        padding-right: 30px !important;
-        padding-top: 20px !important;
-        padding-bottom: 30px !important;
         border-radius: 30px;
         height: 100% !important;
         max-width: 500px;
-        border-color:#0261A6;
+        border-color: #0261A6;
         width: 100%;
-    
+
         p {
             letter-spacing: 0.25px;
         }
-    
+
         button.delete {
             color: #0261A6;
         }
-    
+
         .button-confirm {
             margin-left: 30px;
         }
     }
 
-    .button-dialog{
+    .button-dialog {
         margin-left: 25% !important;
     }
 
-    .password-form-field{
+    .password-form-field {
         margin-top: 10px;
     }
 
-    .dialog-content{
+    .dialog-content {
         padding-left: 20px !important;
         padding-right: 20px !important;
         padding-top: 20px !important;
-        padding-bottom: 10px !important;
-      }
-  
-      h2{
+    }
+
+    h2 {
         color: white !important;
         padding-top: 1px !important;
         padding-left: 55px;
-      }
-  
-      .content-header{
-          background-color:#0261A6;
-          height: 100% !important;
-          height: 70px !important;
-      }
-  
-      .mat-icon-content{
+    }
+
+    .content-header {
+        background-color: #0261A6;
+        height: 100% !important;
+        height: 70px !important;
+    }
+
+    .mat-icon-content {
         color: white !important;
         margin-left: 35% !important;
         margin-top: 10px;
-      }
-    
+    }
+
+}
+
+::ng-deep {
+    .mdc-dialog .mdc-dialog__content {
+        padding: 20px 24px 2px 24px !important;
+    }
 }

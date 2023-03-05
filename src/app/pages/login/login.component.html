@@ -1,45 +1,37 @@
 <div id="login-page" fxFlex="100">
-    <div fxLayout="column" fxFlex="100">
-      <img
-        src="../../../assets/logo-mycontacts.png"
-        alt="logo"
-        class="logo"
-      />
-      <div class="login-wrapper">
-        <h2 class="no-margin">Faça seu login</h2>
-        <p class="login-text">Acesse a aplicação com seu usuário e sua senha</p>
-  
-        <div class="login-form">
-          <form  [formGroup]="loginForm" fxLayout="column" (submit)="onSubmit()">
-            <p class="form">
-              <mat-form-field appearance="outline">
-                <input
-                id="email-input"
-                  matInput
-                  formControlName="email"
-                  placeholder="Ex:teste@gmail.com"
-                />
+  <div fxLayout="column" fxFlex="100">
+    <img src="../../../assets/logo-mycontacts.png" alt="logo" class="logo" />
+    <div class="login-wrapper">
+      <h2 class="no-margin">Faça seu login</h2>
+      <p class="login-text">Acesse a aplicação com seu usuário e sua senha</p>
+      <div class="login-form">
+        <form [formGroup]="loginForm" fxLayout="column" (submit)="onSubmit()">
+          <p class="form">
+            <mat-form-field appearance="outline">
+              <input id="email-input" matInput formControlName="email" placeholder="Ex:teste@gmail.com" />
+              <mat-error *ngIf="loginForm &&
+                loginForm.controls['email'].hasError('required')">
+                Campo obrigatório </mat-error>
+            </mat-form-field>
+          </p>
+          <mat-form-field class="input" appearance="outline">
+            <input id="password-input" matInput formControlName="password" type="password" placeholder="Senha" />
+            <mat-error *ngIf="loginForm &&
+                loginForm.controls['password'].hasError('required')">
+              Campo obrigatório </mat-error>
+          </mat-form-field>
+          <app-error-message [errorListFromRequest]="errors"></app-error-message>
 
-              </mat-form-field>
-            </p>
-              <mat-form-field class="input" appearance="outline">
-                <input
-                id="password-input"
-                  matInput
-                  formControlName="password"
-                  type="password"
-                  placeholder="Senha"
-                />
-              </mat-form-field>
-            <button id="sigin-up-button"  mat-flat-button class="create-user" (click)="openDialogCreateUser(user)">*Não possui conta? Clique aqui para se cadastrar</button>
+          <button id="sigin-up-button" mat-flat-button class="create-user" (click)="openDialogCreateUser(user)">*Não
+            possui conta? Clique aqui para se cadastrar</button>
 
-            <button id="enter-button" (click)="loginUser()" class="w-100" mat-raised-button>
-              Entrar
-            </button>
-        
-          </form>
-        </div>
+          <button id="enter-button" (click)="loginUser()" class="w-100" mat-raised-button>
+            Entrar
+          </button>
+
+        </form>
       </div>
     </div>
+    
   </div>
-  
+</div>

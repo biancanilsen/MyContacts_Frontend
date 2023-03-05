@@ -6,6 +6,8 @@ import { AuthProvider } from 'src/providers/auth.provider';
 import { SnackBarService } from 'src/services/snackbar.service';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ErrorItem } from 'src/utils/api-response';
+import { User } from 'src/models/userModel';
 
 @Component({
   selector: 'app-login',
@@ -25,6 +27,11 @@ export class LoginComponent implements OnInit{
   public set fb(value: FormBuilder) {
     this._fb = value;
   }
+  errorItem: ErrorItem = {
+    message: ""
+  };
+  errors: ErrorItem[] = [];
+
   
   constructor(
     private _fb: FormBuilder,
@@ -36,13 +43,13 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(): void {  
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required]],
+      email: ['', [Validators.email, Validators.required]],
       password: [
         '',
         [
           Validators.required,
           Validators.maxLength(20),
-          Validators.minLength(2),
+          Validators.minLength(3),
         ],
       ],
     });
@@ -63,26 +70,26 @@ export class LoginComponent implements OnInit{
       };
   
       try {
-        const auth = await this.authProvider.login(data);
+        const response = await this.authProvider.login(data );
         this.isLoading = true;
-        localStorage.setItem("token", auth.apiResponse.token);
+        localStorage.setItem('token', response.apiResponse.token);
         this.isLogged = true;
         this.router.navigate(['/home']);
         
       } catch (err: any) {
-        console.log('ERROR 132' + err);
-        this.snackbarService.showError(
-          err.error?.message ?? 'Ocorreu um erro, tente novamente'
-        );
+        if (err?.response?.data?.errors) {
+          this.errors = err.response.data.errors;
+        }
       }
     }
   }
 
-  openDialogCreateUser(userSelected: any){
-        this.dialog.open(LoginDialogComponent, {
-            width: '400px',
-            height: '380px',
-            data: userSelected,
-        });
+  openDialogCreateUser(userSelected: User) {
+    this.dialog.open(LoginDialogComponent, {
+      width: '400px',
+      height: '380px',
+      data: userSelected,
+    });
   }
+  
 }

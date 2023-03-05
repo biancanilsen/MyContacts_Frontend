@@ -1,6 +1,8 @@
 import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiGateway } from 'src/api-gateway';
+import { ApiClient } from 'src/apiClient';
+import { User } from 'src/models/userModel';
+import { ApiResponse } from 'src/utils/api-response';
 
 const apiVersion = 'api/v1';
 
@@ -8,25 +10,11 @@ const apiVersion = 'api/v1';
   providedIn: 'root',
 })
 export class UsersProvider {
-  constructor(private apiGateway: ApiGateway) {}
+  constructor(private apiClient: ApiClient) { }
 
-  ngOnInit(): void {}
-  
-  getUser(): Promise<any> {
-    return new Promise((resolve, reject) => {
-        this.apiGateway.get('user').subscribe((response: HttpResponse<any>) => {
-            resolve(response.body);
-        }, reject);
-    });
-}
+  ngOnInit(): void { }
 
-saveNewUser(contact: any): Promise<any> {
-  return new Promise((resolve, reject) => {
-      this.apiGateway
-          .post('user/register', contact)
-          .subscribe((response: HttpResponse<any>) => {
-              resolve(response.body);
-          }, reject);
-  });
-}
+  async saveNewUser(user: User): Promise<ApiResponse> {
+    return await this.apiClient.post('user/register', user);
+  }
 }
