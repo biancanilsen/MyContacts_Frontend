@@ -1,12 +1,12 @@
 
 # MyContacts_Frontend
 ## Description
-The project consists of a View made with Angular(HTML, SCSS and Typescript),the components used are from Angular Material and the unit tests were made with Karma. 
+The project consists of a View made with Angular(HTML, SCSS and Typescript),the components used are from Angular Material and the unit tests were made with Jasmine. 
 
 ## Technologies used
 
 
-> Developed using: Angular, HTML, SCSS, Typescript e Karma
+> Developed using: Angular, HTML, SCSS, Typescript e Jasmine
 
 ##  Installing Dependencies
 
