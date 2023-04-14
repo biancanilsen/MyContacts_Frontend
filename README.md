@@ -6,7 +6,7 @@ The project consists of a View made with Angular(HTML, SCSS and Typescript),the 
 ## Technologies used
 
 
-> Developed using: Angular, HTML, SCSS, Typescript e Jest
+> Developed using: Angular, HTML, SCSS, Typescript e Karma
 
 ##  Installing Dependencies
 
