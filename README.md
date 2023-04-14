@@ -1,7 +1,7 @@
 
 # MyContacts_Frontend
 ## Description
-The project consists of a View made with Angular(HTML, SCSS and Typescript),the components used are from Angular Material and the unit tests were made with Jasmine. 
+The project consists of a View made with Angular(HTML, SCSS and Typescript),the components used are from Angular Material and the unit tests were made with Jasmine. The objective of the application is to be the frontend of a contact book
 
 ## Technologies used
 
