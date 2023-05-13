@@ -1,6 +1,5 @@
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:3001/',
-  loginRoute: 'http://localhost:4200/login'
-
+  baseUrl: 'https://my-contacts-backend.onrender.com',
+  loginRoute: 'https://my-contacts-frontend-nilsennbianca-gmailcom.vercel.app/login'
 };

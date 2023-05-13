@@ -8,7 +8,6 @@ import { ConfirmDialogService } from '../../../services/confirm-dialog.service';
 import { UserService } from '../../../services/user.service';
 import { environment } from 'src/environments/environment';
 import { SnackBarService } from 'src/services/snackbar.service';
-import { ApiContactResponse } from 'src/utils/api-response';
 import { Contact } from '../../../models/contactModel'
 import { MyChangeEvent } from 'src/models/eventModel';
 import { ContactTableModel } from 'src/models/contactTableModel';
