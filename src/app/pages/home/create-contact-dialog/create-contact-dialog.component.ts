@@ -15,6 +15,8 @@ import { ErrorItem } from 'src/utils/api-response';
 })
 export class CreateContactDialogComponent {
   @Output() onChange: EventEmitter<MyChangeEvent> = new EventEmitter();
+  public myModel = ''
+  public mask = ['+', /\d/, /\d/, '(', /[1-9]/, /\d/, ')', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   contactForm!: FormGroup;
   errorItem: ErrorItem = {
     message: ""
@@ -44,8 +46,8 @@ export class CreateContactDialogComponent {
         '',
         [
           Validators.required,
-          Validators.maxLength(11),
-          Validators.minLength(11),
+          Validators.maxLength(16),
+          Validators.minLength(16),
         ],
       ],
 

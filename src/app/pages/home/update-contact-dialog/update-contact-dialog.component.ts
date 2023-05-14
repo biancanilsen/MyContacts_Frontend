@@ -15,6 +15,8 @@ import { SnackBarService } from '../../../../services/snackbar.service';
 export class UpdateContactDialogComponent {
   @Output() onChange: EventEmitter<MyChangeEvent> = new EventEmitter();
   contactForm!: FormGroup;
+  public myModel = ''
+  public mask = ['+', /\d/, /\d/, '(', /[1-9]/, /\d/, ')', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   method!: string | null;
   errorItem: ErrorItem = {
     message: ""
