@@ -14,18 +14,18 @@ export class ContactProvider {
 
 
   async listContactsByUserId(): Promise<ApiContactsResponse> {
-    return await this.apiClient.get('contacts/list-contacts');
+    return await this.apiClient.get('/contacts/list-contacts');
   }
 
   async saveNewContact(contact: Contact): Promise<ApiContactsResponse> {
-    return await this.apiClient.post('contacts/register', contact);
+    return await this.apiClient.post('/contacts/register', contact);
   }
 
   async updateContact(contact: Contact): Promise<ApiContactResponse> {
-    return await this.apiClient.put('contacts/update', contact);
+    return await this.apiClient.put('/contacts/update', contact);
   }
 
   async deleteContact(id: string): Promise<ApiDeletedContact> {
-    return await this.apiClient.delete('contacts', { id: id });
+    return await this.apiClient.delete('/contacts', { id: id });
   }
 }

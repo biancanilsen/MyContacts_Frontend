@@ -47,8 +47,8 @@ export class HomeComponent {
 
     getContacts(contactSelected: any) {
         const dialogRef = this.dialog.open(UpdateContactDialogComponent, {
-            width: '500px',
-            height: '400px',
+            width: '36%',
+            height: '55%',
             data: contactSelected,
         });
 
@@ -59,8 +59,8 @@ export class HomeComponent {
 
     openDialog() {
         const dialogRef = this.dialog.open(CreateContactDialogComponent, {
-            width: '500px',
-            height: '400px',
+            width: '36%',
+            height: '55%',
         });
 
         dialogRef.afterClosed().subscribe(dependent => {
