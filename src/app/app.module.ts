@@ -29,6 +29,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { ConfirmDialogModule } from './components/snack-bar/confirm-dialog/confirm-dialog.module';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
 import { TextMaskModule } from 'angular2-text-mask'
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { ApiClient } from 'src/apiClient';
 
 @NgModule({
@@ -62,7 +63,8 @@ import { ApiClient } from 'src/apiClient';
     MatDialogModule,
     MatToolbarModule,
     MatChipsModule,
-    TextMaskModule
+    TextMaskModule,
+    FlexLayoutModule
   ],
   providers: [SnackBarService, ConfirmDialogService, ApiClient, provideEnvironmentNgxMask(),],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
