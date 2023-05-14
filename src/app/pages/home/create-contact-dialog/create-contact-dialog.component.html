@@ -23,9 +23,14 @@
           <div fxFlex="100" fxLayoutGap="16px">
             <mat-form-field fxFlex="50" appearance="outline">
               <mat-label>Telefone</mat-label>
-              <input matInput formControlName="telefone" type="text"
-                id="phone-create-contact-input"
-                placeholder="Telefone" />
+                <input matInput
+                  type="tel"
+                  name="phone"
+                  formControlName="telefone"
+                  type="text"
+                  id="phone-create-contact-input"
+                  placeholder="Telefone"
+                  [textMask]="{mask: mask}" [(ngModel)]="myModel">
               <mat-error *ngIf="contactForm &&
                 contactForm.controls['telefone'].hasError('required')">
                 Campo obrigatório </mat-error>

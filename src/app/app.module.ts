@@ -2,7 +2,6 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { LayoutModule } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
@@ -29,6 +28,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatChipsModule } from '@angular/material/chips';
 import { ConfirmDialogModule } from './components/snack-bar/confirm-dialog/confirm-dialog.module';
 import { ErrorMessageComponent } from './components/error-message/error-message.component';
+import { TextMaskModule } from 'angular2-text-mask'
 import { ApiClient } from 'src/apiClient';
 
 @NgModule({
@@ -46,7 +46,6 @@ import { ApiClient } from 'src/apiClient';
     BrowserModule,
     AppRoutingModule, 
     BrowserAnimationsModule,
-    FlexLayoutModule,
     MatIconModule,
     LayoutModule,
     CommonModule,
@@ -62,7 +61,8 @@ import { ApiClient } from 'src/apiClient';
     ConfirmDialogModule,
     MatDialogModule,
     MatToolbarModule,
-    MatChipsModule
+    MatChipsModule,
+    TextMaskModule
   ],
   providers: [SnackBarService, ConfirmDialogService, ApiClient, provideEnvironmentNgxMask(),],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

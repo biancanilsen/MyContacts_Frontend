@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit{
           this.isLogged = true;
           this.router.navigate(['/home']);
           this.onChange.emit();
-          this.snackbarService.successMessage("Contato alterado com sucesso");
+          this.snackbarService.successMessage("Login efetuado com sucesso");
         } 
       } catch {
         this.errors = [{ message: "Ocorreu um erro ao fazer login. Tente novamente." }];
