@@ -2,7 +2,6 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { LayoutModule } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
@@ -47,7 +46,6 @@ import { ApiClient } from 'src/apiClient';
     BrowserModule,
     AppRoutingModule, 
     BrowserAnimationsModule,
-    FlexLayoutModule,
     MatIconModule,
     LayoutModule,
     CommonModule,
