@@ -15,6 +15,6 @@ export class UsersProvider {
   ngOnInit(): void { }
 
   async saveNewUser(user: User): Promise<ApiResponse> {
-    return await this.apiClient.post('user/register', user);
+    return await this.apiClient.post('/user/register', user);
   }
 }

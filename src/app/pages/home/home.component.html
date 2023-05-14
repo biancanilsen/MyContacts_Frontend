@@ -30,15 +30,9 @@
           </button>
         </th>
         <td class="button-tab" mat-cell *matCellDef="let contact">
-          <button id="edit-button" mat-button (click)="getContacts(contact)">
-            <mat-icon class="icon-button">edit</mat-icon>
-          </button>
-          <button id="delete-update-contact-button" mat-button (click)="deleteContact(contact.id)">
-            <mat-icon class="icon-button">delete</mat-icon>
-          </button>
-          <a href="https://api.whatsapp.com/send?phone={{contact.telefone}}&text=Hello this is the starting message">
-            <i class="fab fa-whatsapp"></i>
-          </a>
+          <button mat-icon-button (click)="getContacts(contact)" style="padding: 1px;"><i class="fa-solid fa-pen fa-2xs" style="color: #3e8a2f;"></i></button>
+          <button mat-icon-button (click)="deleteContact(contact.id)"><i class="fa-solid fa-trash fa-2xs" style="color: #d34735;"></i></button>
+          <a mat-icon-button href="https://api.whatsapp.com/send?phone={{contact.telefone}}&text=Hello this is the starting message"><i class="fa-brands fa-whatsapp fa-xs" style="color: #38aa22;"></i></a>
         </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

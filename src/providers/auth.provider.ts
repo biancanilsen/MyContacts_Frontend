@@ -12,6 +12,6 @@ export class AuthProvider {
   ngOnInit(): void { }
 
   async login(credentials: LoginCredentials): Promise<ApiTokenResponse> {
-    return await this.apiClient.post('user/login', credentials);
+    return await this.apiClient.post('/user/login', credentials);
   }
 }
