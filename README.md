@@ -26,4 +26,4 @@ npm run start
 npm test
 
 ##  Link to access the application:
-https://app-my-contact-backend.herokuapp.com/
+https://mycontacts-web.vercel.app/login
